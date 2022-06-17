@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block page_title %}send and clear{% endblock %}
+{% block head %}
+<style>
+#div1 {
+    width: 350px;
+    height: 350px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+{% endblock %}
+{% block body %}
+ 
+<article>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<img id="drag1" src="{{ url_for('static', filename='imgs/python-icon.png') }}" draggable="true"
+ondragstart="drag(event)">
+</article>
+
+{% endblock %}

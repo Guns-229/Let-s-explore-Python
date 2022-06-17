@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+      <h1>!!!Welcome to Pareeksha !!!</h1>
+      <h2>Please login to proceed ...</h2>
+
+      <form action="" method="post"  enctype="multipart/form-data">
+         <dl>
+            <dt>Username:</dt>
+
+            <dd>
+               <input type="text" name="username"
+                  value="{{request.form.username }}">
+            </dd>
+
+            <dt>Password:</dt>
+            <dd><input type="password" name="password"></dd>
+            <dt>Photo:</dt>
+            <dd><input type="file" name="user_photo"></dd>
+         </dl>
+         <p><input type="submit" value="upload"></p>
+      </form>
+{% endblock %}
+

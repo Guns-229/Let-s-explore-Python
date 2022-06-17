@@ -1,0 +1,17 @@
+<html>
+<body>
+    <div>
+        <div id="question">{{ question }}
+        </div>
+        <div id="choices">
+            <ul>
+                {% for choice in choices %}
+                <li><input id="{{ choice_id }}" type="radio">{{ choice_choice }}</li> 
+
+                {% endfor %}
+            </ul>
+        </div>
+        <input type="submit">
+    </div>
+</body>
+</html>

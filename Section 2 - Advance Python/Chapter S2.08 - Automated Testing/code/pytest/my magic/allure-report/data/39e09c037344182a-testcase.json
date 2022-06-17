@@ -1,0 +1,50 @@
+{
+  "uid" : "39e09c037344182a",
+  "name" : "test_skip_xfail_in_parametrize[5]",
+  "title" : "Test skip xfail in parametrize [5]",
+  "time" : {
+    "start" : 1494642672352,
+    "stop" : 1494642672365,
+    "duration" : 13
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "TypeError: object.__new__(): not enough arguments",
+    "stackTrace" : "value = 5\n\n    @pytest.mark.parametrize('value', [\n                                      1,\n                                      2,\n                                      5,\n                                      pytest.mark.skipif(3),\n                                      pytest.mark.xfail(0),\n                                      pytest.mark.xfail(10)\n                                      ])\n    def test_skip_xfail_in_parametrize(value):\n        'same as above_3, but has some decorators'\n    \n        if(value == 5):\n>           allure.pytest_plugin.TestCase.__new__()\nE           TypeError: object.__new__(): not enough arguments\n\ntry_2.py:33: TypeError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 07:39:58 2017\n\n@author: johri_m\n\r\nsame as above_3, but has some decorators",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "dc2964fff382b3dc",
+    "name" : "try_2",
+    "title" : "Try 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "7164-MainThread"
+  } ],
+  "parameters" : [ ]
+}

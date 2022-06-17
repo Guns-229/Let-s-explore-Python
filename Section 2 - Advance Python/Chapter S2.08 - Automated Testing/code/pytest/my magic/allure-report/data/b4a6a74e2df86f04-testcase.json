@@ -1,0 +1,59 @@
+{
+  "uid" : "b4a6a74e2df86f04",
+  "name" : "test_many_bdd_labels_for_one_function",
+  "title" : "Test many bdd labels for one function",
+  "time" : {
+    "start" : 1494673381913,
+    "stop" : 1494673381916,
+    "duration" : 3
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\n>>> allure_report = getfixture('allure_report')\n>>> assert_that(allure_report,\n...             all_of(\n...                 has_property('test_cases', has_length(3)),\n...                 has_property('test_groups', has_length(0))\n...             ))  # doctest: +SKIP\n\r\n\n    >>> allure_report = getfixture('allure_report')\n    >>> assert_that(allure_report,\n    ...             has_test_case('test_many_bdd_labels_for_one_function',\n    ...                 all_of(\n    ...                     has_feature('feature one'),\n    ...                     has_feature('feature two'),\n    ...                     has_story('story one'),\n    ...                     has_story('story two')\n    ...                 )\n    ...             ))\n    ",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "5729213335addbfa",
+    "name" : "try10",
+    "title" : "Try 10"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "story",
+    "value" : "story two"
+  }, {
+    "name" : "feature",
+    "value" : "feature two"
+  }, {
+    "name" : "suite-name",
+    "value" : "try10"
+  }, {
+    "name" : "thread",
+    "value" : "4296-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "story",
+    "value" : "story one"
+  }, {
+    "name" : "feature",
+    "value" : "feature one"
+  } ],
+  "parameters" : [ ]
+}

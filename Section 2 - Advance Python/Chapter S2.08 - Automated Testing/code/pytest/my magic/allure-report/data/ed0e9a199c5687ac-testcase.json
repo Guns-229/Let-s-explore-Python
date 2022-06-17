@@ -1,0 +1,47 @@
+{
+  "uid" : "ed0e9a199c5687ac",
+  "name" : "test_fixture_parameters[bar]",
+  "title" : "Test fixture parameters [bar]",
+  "time" : {
+    "start" : 1494642759221,
+    "stop" : 1494642759222,
+    "duration" : 1
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 07:39:58 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "14f09bc9dcb0ad5e",
+    "name" : "try_2",
+    "title" : "Try 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "9076-MainThread"
+  } ],
+  "parameters" : [ ]
+}

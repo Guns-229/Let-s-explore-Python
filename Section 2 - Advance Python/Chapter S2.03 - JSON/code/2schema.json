@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome",
+    "definitions": {
+        "Welcome": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "project_id": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "cluster_name_prefix": {
+                    "type": "string"
+                },
+                "cluster_name": {
+                    "type": "string"
+                },
+                "cluster_labels_selector": {
+                    "$ref": "#/definitions/ClusterLabelsSelector"
+                },
+                "cluster_workflow_labels_selector": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "exclude_workflow_templates": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "replication_policies": {
+                    "$ref": "#/definitions/ReplicationPolicies"
+                }
+            },
+            "required": [],
+            "title": "Welcome"
+        },
+        "ClusterLabelsSelector": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "azy": {
+                    "type": "string"
+                },
+                "azy2": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "ClusterLabelsSelector"
+        },
+        "ReplicationPolicies": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "aggressive_downscaling": {
+                    "type": "string"
+                },
+                "aggressive_upscaling": {
+                    "type": "string"
+                },
+                "bau": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "ReplicationPolicies"
+        }
+    }
+}
+

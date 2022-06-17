@@ -1,0 +1,22 @@
+{
+"project_id": "db-data-factory",
+"region": "asia-south1",
+"cluster_name_prefix": "dprocutil-default",
+"cluster_name": "some-cluster-name",
+"cluster_labels_selector": {
+"azy": "pyspark-stream-example",
+"azy2": "cluster_selector-default"
+},
+"cluster_workflow_labels_selector": [
+"azy",
+"selector_key1"
+],
+"exclude_workflow_templates": [
+"poc-template"
+],
+"replication_policies": {
+"aggressive_downscaling": "azy-downscaling_asia-south1",
+"aggressive_upscaling": "azy-upscaling_asia-south1",
+"bau": "azy-bau_asia-south1"
+}
+}

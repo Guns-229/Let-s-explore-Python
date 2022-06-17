@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block header%}
+<style>
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Result</h1>
+<table>
+ <thead>
+  <tr>
+     <th>Correct</th>
+     <th>Worng</th>
+  </tr>
+ </thead>
+ <tbody>
+    <tr>
+        <td id="correct">{{correct}}</td>
+        <td id="wrong">{{wrong}}</td>
+    </tr>
+</tbody>
+</table>
+
+{% endblock %}

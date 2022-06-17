@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Please select a topic to evaluation</h1>
+<form id="select_topic" action="/start_quiz" method="POST" >
+     <select name="topic">
+        {% for topic in topics %}
+            <option value="{{ topic }}">{{topic}}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit"/>
+</form>
+
+{% block jsblock%}
+
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Please select a topic to evaluation</h1>
+<form id="select_topic" action="/check_user" method="POST" >
+     <select name="topic">
+        {% for topic in topics %}
+            <option value="{{ topic[0] }}">{{topic[1]}}</option>
+        {% endfor %}
+    </select>
+    <label>Username: </label><input type="input" name="username"/>
+    <input type="submit"/>
+</form>
+{% endblock %}

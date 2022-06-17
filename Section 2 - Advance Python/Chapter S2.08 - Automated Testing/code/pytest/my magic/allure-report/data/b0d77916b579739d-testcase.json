@@ -1,0 +1,50 @@
+{
+  "uid" : "b0d77916b579739d",
+  "name" : "TEST_cfaxu",
+  "title" : "TEST cfaxu",
+  "time" : {
+    "start" : 1494714880679,
+    "stop" : 1494714880865,
+    "duration" : 186
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "AssertionError: bar\nassert 'a' == 'b'\n  - a\n  + b",
+    "stackTrace" : "name = 'bar', left = 'a', right = 'b'\n\n    @pytest.mark.parametrize('name, left, right', [['foo', 'a', 'a'],\n                                                   ['bar', 'a', 'b'],\n                                                   ['baz', 'b', 'b']])\n    def test_auto(name, left, right):\n    \n        @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n        def test_new(name, left, right):\n            assert left == right, name\n        # pytest.allure.severity_level\n    \n        def myd():\n            print(\"Myd\")\n        # pytest.allure._allurelistener.test = myd()\n        print(type(pytest.allure._allurelistener.test.labels))\n        # print(\"labels: \", pytest.allure._allurelistener.test.labels)\n        # print(\"Name: \", pytest.allure._allurelistener.test.name)\n        pytest.allure._allurelistener.test.name = \"TEST_\" + randomword(5)\n        # allure_test = pytest.allure._allurelistener.test\n        for lab, value in pytest.allure._allurelistener.test.labels:\n            if \"severity\" in lab:\n                print(\"lab\")\n                value = \"critical\"\n            print(lab, value)\n        # allure_test.labels.append(\"<severity>pytest.allure.severity_level.CRITICAL</severity>\")\n        # print(\"Name: \", pytest.allure._allurelistener.test.name)\n        pytest.allure.story(\"TEST1\")\n    \n        # print(dir()\n        # print(dir(allure.issue(\"TEST\")))\n>       test_new(name, left, right)\n\ntry_4.py:48: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nname = 'bar', left = 'a', right = 'b'\n\n    @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n    def test_new(name, left, right):\n>       assert left == right, name\nE       AssertionError: bar\nE       assert 'a' == 'b'\nE         - a\nE         + b\n\ntry_4.py:26: AssertionError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "daf894dce86b0aff",
+    "name" : "try_4",
+    "title" : "Try 4"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "2228-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4"
+  } ],
+  "parameters" : [ ]
+}

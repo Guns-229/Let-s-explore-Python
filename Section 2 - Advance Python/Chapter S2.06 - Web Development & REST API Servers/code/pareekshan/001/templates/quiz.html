@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block header%}
+<style>
+#question{
+    background-color: #cefff0;
+    border: solid #ceefe4 2px;
+    font-size: 1.1em;
+    color: #31101b;
+    font-family: Tahoma, Geneva, sans-serif;
+    margin-top: 2em;
+    padding: 0.2em;
+}
+#choices{
+    border: 1px solid  #ceefe4;
+    background-color: white;
+    font-family: Tahoma, Geneva, sans-serif;
+    padding: 0.5em;
+    padding-left: 2em;
+}
+#code {
+    font-family: "Lucida Console", Monaco, monospace;
+    padding: 0.2em;
+    font-size: 0.9em;
+    white-space: pre;
+    display: block;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 center>Please select the correct choice</h1>
+ <form action="/show_result" method="POST" >
+    {% for question in questions %}
+    <div id="question">{{question.question}}</div>
+    <div id="choices">
+        {% for choice in question.choices %}
+             <input type="radio" name="choice_{{question.id}}" value="{{choice.id}}"/>{{choice.choice}}<br/>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <input type="submit"/>
+</form>
+
+{% endblock %}

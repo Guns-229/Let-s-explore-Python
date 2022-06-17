@@ -1,0 +1,235 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "project_id": "db-data-factory",
+            "region": "asia-south1",
+            "cluster_name_prefix": "dprocutil-default",
+            "cluster_name": "some-cluster-name",
+            "cluster_labels_selector": {
+                "azy": "pyspark-stream-example",
+                "azy2": "cluster_selector-default"
+            },
+            "cluster_workflow_labels_selector": [
+                "azy",
+                "selector_key1"
+            ],
+            "exclude_workflow_templates": [
+                "poc-template"
+            ],
+            "replication_policies": {
+                "aggressive_downscaling": "azy-downscaling_asia-south1",
+                "aggressive_upscaling": "azy-upscaling_asia-south1",
+                "bau": "azy-bau_asia-south1"
+            }
+        }
+    ],
+    "required": [
+        "project_id",
+        "region",
+        "cluster_name_prefix",
+        "cluster_name",
+        "cluster_labels_selector",
+        "cluster_workflow_labels_selector",
+        "exclude_workflow_templates",
+        "replication_policies"
+    ],
+    "properties": {
+        "project_id": {
+            "$id": "#/properties/project_id",
+            "type": "string",
+            "title": "The project_id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "db-data-factory"
+            ]
+        },
+        "region": {
+            "$id": "#/properties/region",
+            "type": "string",
+            "title": "The region schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "asia-south1"
+            ]
+        },
+        "cluster_name_prefix": {
+            "$id": "#/properties/cluster_name_prefix",
+            "type": "string",
+            "title": "The cluster_name_prefix schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "dprocutil-default"
+            ]
+        },
+        "cluster_name": {
+            "$id": "#/properties/cluster_name",
+            "type": "string",
+            "title": "The cluster_name schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "some-cluster-name"
+            ]
+        },
+        "cluster_labels_selector": {
+            "$id": "#/properties/cluster_labels_selector",
+            "type": "object",
+            "title": "The cluster_labels_selector schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "azy": "pyspark-stream-example",
+                    "azy2": "cluster_selector-default"
+                }
+            ],
+            "required": [
+                "azy",
+                "azy2"
+            ],
+            "properties": {
+                "azy": {
+                    "$id": "#/properties/cluster_labels_selector/properties/azy",
+                    "type": "string",
+                    "title": "The azy schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "pyspark-stream-example"
+                    ]
+                },
+                "azy2": {
+                    "$id": "#/properties/cluster_labels_selector/properties/azy2",
+                    "type": "string",
+                    "title": "The azy2 schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "cluster_selector-default"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "cluster_workflow_labels_selector": {
+            "$id": "#/properties/cluster_workflow_labels_selector",
+            "type": "array",
+            "title": "The cluster_workflow_labels_selector schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    "azy",
+                    "selector_key1"
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/cluster_workflow_labels_selector/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/cluster_workflow_labels_selector/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "azy",
+                            "selector_key1"
+                        ]
+                    }
+                ]
+            }
+        },
+        "exclude_workflow_templates": {
+            "$id": "#/properties/exclude_workflow_templates",
+            "type": "array",
+            "title": "The exclude_workflow_templates schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    "poc-template"
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/exclude_workflow_templates/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/exclude_workflow_templates/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "poc-template"
+                        ]
+                    }
+                ]
+            }
+        },
+        "replication_policies": {
+            "$id": "#/properties/replication_policies",
+            "type": "object",
+            "title": "The replication_policies schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "aggressive_downscaling": "azy-downscaling_asia-south1",
+                    "aggressive_upscaling": "azy-upscaling_asia-south1",
+                    "bau": "azy-bau_asia-south1"
+                }
+            ],
+            "required": [
+                "aggressive_downscaling",
+                "aggressive_upscaling",
+                "bau"
+            ],
+            "properties": {
+                "aggressive_downscaling": {
+                    "$id": "#/properties/replication_policies/properties/aggressive_downscaling",
+                    "type": "string",
+                    "title": "The aggressive_downscaling schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "azy-downscaling_asia-south1"
+                    ]
+                },
+                "aggressive_upscaling": {
+                    "$id": "#/properties/replication_policies/properties/aggressive_upscaling",
+                    "type": "string",
+                    "title": "The aggressive_upscaling schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "azy-upscaling_asia-south1"
+                    ]
+                },
+                "bau": {
+                    "$id": "#/properties/replication_policies/properties/bau",
+                    "type": "string",
+                    "title": "The bau schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "azy-bau_asia-south1"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

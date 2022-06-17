@@ -1,0 +1,47 @@
+{
+  "uid" : "f28f749a49986672",
+  "name" : "test_me[foo-a-a]",
+  "title" : "Test me [foo-a-a]",
+  "time" : {
+    "start" : 1494642999269,
+    "stop" : 1494642999273,
+    "duration" : 4
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "4ffed4d7b3fe3419",
+    "name" : "try_3",
+    "title" : "Try 3"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "6348-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_3"
+  } ],
+  "parameters" : [ ]
+}

@@ -1,0 +1,47 @@
+{
+  "uid" : "11697f6d85e0a02",
+  "name" : "test_is_above_3[4]",
+  "title" : "Test is above 3 [4]",
+  "time" : {
+    "start" : 1494642759157,
+    "stop" : 1494642759158,
+    "duration" : 1
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 07:39:58 2017\n\n@author: johri_m\n\r\nchecks that ``value`` is above 3",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "14f09bc9dcb0ad5e",
+    "name" : "try_2",
+    "title" : "Try 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "9076-MainThread"
+  } ],
+  "parameters" : [ ]
+}

@@ -1,0 +1,38 @@
+{
+	"results": [{
+		"user": {
+			"gender": "male",
+			"name": {
+				"title": "mr",
+				"first": "ernest",
+				"last": "coleman"
+			},
+			"location": {
+				"street": "6735 greenhaven ln",
+				"city": "sunnyvale",
+				"state": "connecticut",
+				"zip": "33332"
+			},
+			"email": "ernest.coleman20@example.com",
+			"username": "yellowdog409",
+			"password": "ledzep",
+			"salt": "7iDblTIm",
+			"md5": "3c9871f954d86c58d3f49b98a7fb60c3",
+			"sha1": "d6cb9b8abb27f9718ee9185b2cde298665a177b5",
+			"sha256": "4fdb19e71c66c91f27f5208cc2a59ca8833ed9b72c549f11ea6a881ffde23c65",
+			"registered": "1315463131",
+			"dob": "468664323",
+			"phone": "(348)-196-2669",
+			"cell": "(757)-671-8341",
+			"SSN": "641-99-7751",
+			"picture": {
+				"large": "http://api.randomuser.me/portraits/men/72.jpg",
+				"medium": "http://api.randomuser.me/portraits/med/men/44.jpg",
+				"thumbnail": "http://api.randomuser.me/portraits/thumb/men/47.jpg"
+			},
+			"version": "0.6",
+			"nationality": "US"
+		},
+		"seed": "369a24e79c2f8676"
+	}]
+}

@@ -1,0 +1,47 @@
+{
+  "uid" : "36c4c844210c498a",
+  "name" : "test_auto[baz-b-b]",
+  "title" : "Test auto [baz-b-b]",
+  "time" : {
+    "start" : 1494654149707,
+    "stop" : 1494654149707,
+    "duration" : 0
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "38bcd8324a80d3e7",
+    "name" : "try_3",
+    "title" : "Try 3"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "8004-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_3"
+  } ],
+  "parameters" : [ ]
+}

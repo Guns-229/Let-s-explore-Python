@@ -1,0 +1,87 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1494722426237" stop="1494722426550">
+  <description>
+Created on Sat May 13 08:06:17 2017
+
+@author: johri_m
+</description>
+  <name>try_4_1</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1494722426237" status="passed" stop="1494722426268">
+      <name>TEST_mlsev</name>
+      <attachments/>
+      <labels>
+        <label name="story" value="TEST 2"/>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="9184-MainThread"/>
+        <label name="host" value="LP-R90C2H0L"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1494722426300" status="failed" stop="1494722426487">
+      <name>test_auto[bar-a-b]</name>
+      <failure>
+        <message>AssertionError: bar
+assert 'a' == 'b'
+  - a
+  + b</message>
+        <stack-trace>name = 'bar', left = 'a', right = 'b'
+
+    @pytest.allure.story("TEST 2")
+    @pytest.mark.parametrize('name, left, right', [['foo', 'a', 'a'],
+                                                   ['bar', 'a', 'b'],
+                                                   ['baz', 'b', 'b']])
+    def test_auto(name, left, right):
+    
+        @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)
+        def test_new(name, left, right):
+            assert left == right, name
+        # pytest.allure.severity_level
+    
+        def myd():
+            print("Myd")
+        # pytest.allure._allurelistener.test = myd()
+    
+        # allure_test.labels.append("&lt;severity&gt;pytest.allure.severity_level.CRITICAL&lt;/severity&gt;")
+        # print("Name: ", pytest.allure._allurelistener.test.name)
+        # print(dir()
+        # print(dir(allure.issue("TEST")))
+&gt;       test_new(name, left, right)
+
+try_4_1.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'bar', left = 'a', right = 'b'
+
+    @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)
+    def test_new(name, left, right):
+&gt;       assert left == right, name
+E       AssertionError: bar
+E       assert 'a' == 'b'
+E         - a
+E         + b
+
+try_4_1.py:38: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="story" value="TEST 2"/>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="9184-MainThread"/>
+        <label name="host" value="LP-R90C2H0L"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1494722426518" status="passed" stop="1494722426550">
+      <name>TEST_mdbbp</name>
+      <attachments/>
+      <labels>
+        <label name="story" value="TEST 2"/>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="9184-MainThread"/>
+        <label name="host" value="LP-R90C2H0L"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

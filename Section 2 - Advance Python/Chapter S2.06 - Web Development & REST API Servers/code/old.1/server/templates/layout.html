@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{% block page_title %}{% endblock %} | Mayank's Flask Selenium Samples</title>
+<!--   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-combined.min.css') }}" /> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-git.js') }}">
+  </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}">
+  </script>
+  <style>
+  .sections {
+    padding: 2em;
+  }
+  </style>
+{% block head %}{% endblock %}
+</head>
+
+<body>
+  <div class="sections">
+  {% block body %}{% endblock %}
+  </div>
+</body>
+
+</html>

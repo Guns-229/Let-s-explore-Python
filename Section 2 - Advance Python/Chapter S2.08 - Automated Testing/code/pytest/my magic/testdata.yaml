@@ -1,0 +1,6 @@
+TESTCASE:
+  name: myname1
+  sev: pytest.allure.severity_level.CRITICAL
+TESTCASE2:
+  name: myname2
+  sev: pytest.allure.severity_level.TRIVIAL

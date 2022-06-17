@@ -1,0 +1,50 @@
+{
+  "uid" : "24c24f18a87c963a",
+  "name" : "TEST_mdbbp",
+  "title" : "TEST mdbbp",
+  "time" : {
+    "start" : 1494722426518,
+    "stop" : 1494722426550,
+    "duration" : 32
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "8691425f234b27b4",
+    "name" : "try_4_1",
+    "title" : "Try 4 1"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4_1"
+  }, {
+    "name" : "story",
+    "value" : "TEST 2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "9184-MainThread"
+  } ],
+  "parameters" : [ ]
+}

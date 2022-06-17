@@ -1,0 +1,47 @@
+{
+  "uid" : "60cc580489047eb9",
+  "name" : "TEST_jsusk",
+  "title" : "TEST jsusk",
+  "time" : {
+    "start" : 1494715745565,
+    "stop" : 1494715745581,
+    "duration" : 16
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "579bae19bff34826",
+    "name" : "try_4",
+    "title" : "Try 4"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "4932-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4"
+  } ],
+  "parameters" : [ ]
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+   <body onload="display_uuid()">
+        <div>Please enter the user details:</div>
+        <form action = "/regval" method = "POST">
+            <p>username <input type = "text" name = "username" /></p>
+            <p>First Name <input type = "text" name = "first_name" /></p>
+            <p>Last Name <input type = "text" name = "last_name" /></p>
+            <p><input type = "submit" value = "submit" /></p>
+        </form>
+        <div><label id="uuid"></label></div>
+        <script>
+
+            function set_cookie(cname,cvalue,exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function get_cookie(cname) {
+                var name = cname + "=";
+                var decoded_cookie = decodeURIComponent(document.cookie);
+                var ca = decoded_cookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            };
+
+            function get_random_int(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function display_uuid(){
+                var uuid = get_cookie("uuid");
+                console.info(uuid);
+                document.getElementById("uuid").innerHTML = uuid;
+                set_cookie("random_num", get_random_int(10, 1000));
+            };
+
+
+        </script>
+   </body>
+</html>

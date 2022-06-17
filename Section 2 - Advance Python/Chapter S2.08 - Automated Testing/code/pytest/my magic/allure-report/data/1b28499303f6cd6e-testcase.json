@@ -1,0 +1,50 @@
+{
+  "uid" : "1b28499303f6cd6e",
+  "name" : "test_auto[bar-a-b]",
+  "title" : "Test auto [bar-a-b]",
+  "time" : {
+    "start" : 1494674925924,
+    "stop" : 1494674926073,
+    "duration" : 149
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "AssertionError: bar\nassert 'a' == 'b'\n  - a\n  + b",
+    "stackTrace" : "name = 'bar', left = 'a', right = 'b'\n\n    @pytest.mark.parametrize('name, left, right', [['foo', 'a', 'a'],\n                                                   ['bar', 'a', 'b'],\n                                                   ['baz', 'b', 'b']])\n    def test_auto(name, left, right):\n        @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n        def test_new(name, left, right):\n            assert left == right, name\n        print(print(allure))\n        pytest.allure.story(\"TEST1\")\n    \n        # print(dir()\n        # print(dir(allure.issue(\"TEST\")))\n>       test_new(name, left, right)\n\ntry_4.py:24: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nname = 'bar', left = 'a', right = 'b'\n\n    @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n    def test_new(name, left, right):\n>       assert left == right, name\nE       AssertionError: bar\nE       assert 'a' == 'b'\nE         - a\nE         + b\n\ntry_4.py:18: AssertionError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "4b1f6cf0f1da898e",
+    "name" : "try_4",
+    "title" : "Try 4"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4"
+  }, {
+    "name" : "thread",
+    "value" : "8416-MainThread"
+  } ],
+  "parameters" : [ ]
+}

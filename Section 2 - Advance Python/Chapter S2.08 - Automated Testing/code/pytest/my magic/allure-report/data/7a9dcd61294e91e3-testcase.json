@@ -1,0 +1,50 @@
+{
+  "uid" : "7a9dcd61294e91e3",
+  "name" : "test_is_above_3[2]",
+  "title" : "Test is above 3 [2]",
+  "time" : {
+    "start" : 1494642403915,
+    "stop" : 1494642403929,
+    "duration" : 14
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "AssertionError: assert 2 > 3",
+    "stackTrace" : "value = 2\n\n    @pytest.mark.parametrize('value', range(5))\n    def test_is_above_3(value):\n        'checks that ``value`` is above 3'\n    \n>       assert value > 3\nE       assert 2 > 3\n\ntry_2.py:18: AssertionError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 07:39:58 2017\n\n@author: johri_m\n\r\nchecks that ``value`` is above 3",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "35e75707b563807a",
+    "name" : "try_2",
+    "title" : "Try 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "5184-MainThread"
+  } ],
+  "parameters" : [ ]
+}

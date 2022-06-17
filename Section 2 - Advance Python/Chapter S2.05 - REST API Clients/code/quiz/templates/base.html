@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Online testing site">
+    <title>{{ page }} Page &ndash; - The Grrrill </title>
+
+    <link rel=" stylesheet " href="{{ url_for( 'static', filename='css/pure-min.css' ) }} ">
+
+    <!--[if lte IE 8]>
+        <link rel=" stylesheet " href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-old-ie-min.css ">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet " href="{{ url_for( 'static', filename='css/grids-responsive-min.css' ) }} "> {% block head %}{% endblock %}
+</head>
+
+<body>
+
+
+
+
+
+    <div id="content ">{% block content %}{% endblock %}</div>
+
+    <div class="footer l-box is-center ">
+        {% block footer %} &copy; Copyright 2017 by Mayank Johri funmayank@yahoo.co.in{% endblock %}
+    </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

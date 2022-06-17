@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE addresses SYSTEM "addresses.dtd">
+<addresses>
+  <address>
+    <name>Joe Tester</name>
+    <street>Baker street 5</street>
+  </address>
+  <address>
+    <name>Jon Doe</name>
+    <street>Baker street 15</street>
+  </address>
+    <address>
+    <name>Ramesh</name>
+    <street>Baker street 222</street>
+  </address>
+</addresses>
+
+

@@ -1,0 +1,47 @@
+{
+  "uid" : "8dc8d9279016a41f",
+  "name" : "TEST_baleu",
+  "title" : "TEST baleu",
+  "time" : {
+    "start" : 1494714880663,
+    "stop" : 1494714880663,
+    "duration" : 0
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "daf894dce86b0aff",
+    "name" : "try_4",
+    "title" : "Try 4"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "2228-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4"
+  } ],
+  "parameters" : [ ]
+}

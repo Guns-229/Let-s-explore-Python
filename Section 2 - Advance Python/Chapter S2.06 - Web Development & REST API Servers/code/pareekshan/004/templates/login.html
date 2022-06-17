@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+      <h1>!!!Welcome to Pareeksha !!!</h1>
+      <h2>Please login to proceed ...</h2>
+
+      <form action="" method="post">
+         <dl>
+            <dt>Username:</dt>
+
+            <dd>
+               <input type="text" name="username"
+                  value="{{request.form.username }}">
+            </dd>
+
+            <dt>Password:</dt>
+            <dd><input type="password" name="password"></dd>
+         </dl>
+         <p><input type="submit" value="Login"></p>
+      </form>
+{#       {% if error %}
+      <p><strong>Error:</strong> {{ error }}
+      {% endif %} #}
+{% endblock %}
+

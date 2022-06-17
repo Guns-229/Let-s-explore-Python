@@ -1,0 +1,53 @@
+ {% extends "base.html" %} {% block title %}Index{% endblock %} {% block head %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />{% endblock %} {% block content %}
+
+
+<div class="wrapper">
+    <!--Element to deactivate the Quiz area by dropping a transparent background-->
+    <article class="deactivate">
+    </article>
+
+    <article class="show-feedback">
+        <div class="feedback">
+            <h2></h2>
+        </div>
+    </article>
+
+    <section class="quiz-wrap">
+        <header class="quiz-header">
+            <h2>JAVASCRIPT QUIZ</h2>
+        </header>
+        <div class="quiz-container">
+            <div class="question-count">Question <span></span></div>
+            <article class="quiz-area">
+            </article>
+        </div>
+    </section>
+    <aside class="score-wrap">
+        <p>Score: <span id="score">0</span></p>
+    </aside>
+    <article class="continue">
+        <div>
+            <h1>Continue >></h1>
+        </div>
+    </article>
+    <!-- Modal Information Box -->
+    <div class="game-over" id="modal">
+        <div class="content">
+            <h3>GAME OVER</h3>
+            <div>
+                <p></p>
+                <p>PLAY AGAIN?</p>
+                <a href="./quiz.html">YES!</a>
+                <a href="./index.html">NO</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<footer class="sticky-quiz-footer bg-orange">
+    <ul class="quiz-results">
+    </ul>
+</footer>
+-->
+{% endblock %}

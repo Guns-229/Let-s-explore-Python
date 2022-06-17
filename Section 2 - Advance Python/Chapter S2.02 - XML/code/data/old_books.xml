@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<books>
+    <book title="Ṛg-Veda Khilāni">
+        <editor>Jost Gippert</editor>
+        <publication>Frankfurt: TITUS</publication>
+        <year>2008</year>
+        <web_page>http://titus.uni-frankfurt.de/texte/etcs/ind/aind/ved/rv/rvkh/rvkh.htm</web_page>
+    </book>    
+    <book title="Ṛgveda-Saṃhitā">
+        <editor>Jost Gippert</editor>
+        <publication>Frankfurt: TITUS</publication>
+        <year>2000</year>
+        <web_page>http://titus.uni-frankfurt.de/texte/etcs/ind/aind/ved/rv/mt/rv.htm</web_page>
+    </book>	
+</books>

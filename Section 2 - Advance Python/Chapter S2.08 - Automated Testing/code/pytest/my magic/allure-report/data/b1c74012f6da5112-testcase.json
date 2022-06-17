@@ -1,0 +1,47 @@
+{
+  "uid" : "b1c74012f6da5112",
+  "name" : "test_auto[foo-a-a]",
+  "title" : "Test auto [foo-a-a]",
+  "time" : {
+    "start" : 1494653871814,
+    "stop" : 1494653871814,
+    "duration" : 0
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "3b140ef9e70bee82",
+    "name" : "try_3",
+    "title" : "Try 3"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_3"
+  }, {
+    "name" : "thread",
+    "value" : "4596-MainThread"
+  } ],
+  "parameters" : [ ]
+}

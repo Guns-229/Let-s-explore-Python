@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block header%}
+<style>
+#question{
+    background-color: #cefff0;
+    border: solid #ceefe4 2px;
+    font-size: 1.1em;
+    color: #31101b;
+    font-family: Tahoma, Geneva, sans-serif;
+    margin-top: 2em;
+    padding: 0.2em;
+}
+#choices{
+    border: 1px solid  #ceefe4;
+    background-color: white;
+    font-family: Tahoma, Geneva, sans-serif;
+    padding: 0.5em;
+    padding-left: 2em;
+}
+#code {
+    font-family: "Lucida Console", Monaco, monospace;
+    padding: 0.2em;
+    font-size: 0.9em;
+    white-space: pre;
+    display: block;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to Pareekshan</h1>
+<div>
+    <p>Hello {{ session['username'] }},</p>
+    We are going to have 10 questions. we have two buttons, "next" and "Lets Evaluate".
+    You can go to the next question by clicking "next" and end the session by clicking "Lets Evaluate".
+</div>
+
+    <a type="button" id="start" value="Lets Start the Test" >Lets Start the Test</a>
+<script>
+    $().ready(function(){
+        var sols = {};
+
+        var questions = {{questions}};
+        for (a in questions){
+            console.info(questions[a]);
+            sols[questions[a]] = "";
+        }
+        sols = JSON.stringify(sols);
+        console.log(sols);
+        sessionStorage.setItem("sols",sols);
+        var meta1 = JSON.parse(window.sessionStorage.getItem("sols"));
+        console.log("meta 1", meta1);
+        sessionStorage.setItem("quest", JSON.stringify(questions));
+
+        var quest = JSON.parse(sessionStorage.quest);
+        console.log("Quest", quest);
+        $("#start").attr('href', '/one_q?q_id=' + quest[0]);
+
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+Dataset: Gunpowder.dat
+Source: Count (1797). Experiments to Determine the Force of Fired Gunpowder. Philosophical 
+Transactions of the Royal Society of London, Vol.87, pp222-292.
+
+Description: Charge and Elasticity of Fired gunpowder. CountËs Theory:
+YË=X**(1+0.0004X)    where YË=Elas/1.841 and  X=Charge
+
+Variables/Columns
+Charge   1-3
+Elasticity     7-13

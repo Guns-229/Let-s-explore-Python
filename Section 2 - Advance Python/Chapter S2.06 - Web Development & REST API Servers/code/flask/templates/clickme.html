@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>click demo</title>
+  <style>
+  p {
+    color: red;
+    margin: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: yellow;
+  }
+  </style>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+</head>
+<body>
+ 
+<button id="upload">test</button>
+ 
+<script>
+$( "#upload" ).click(function() {
+  console.log("clicked")
+
+});
+</script>
+ 
+</body>
+</html>

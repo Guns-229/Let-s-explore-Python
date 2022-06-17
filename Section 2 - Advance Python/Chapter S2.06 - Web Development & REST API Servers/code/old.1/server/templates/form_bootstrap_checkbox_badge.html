@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {% block page_title %}send and clear{% endblock %} {% block body %}
+<form class="form-horizontal" action="/form_bootstrap_dropdown" method="post">
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div id="opts" class="btn-group" data-toggle="buttons">
+        <!-- https://bootsnipp.com/snippets/featured/badgebox-css-checkbox-badge -->
+        <div class="container">
+          <div id="cb" class="row text-center">
+            <label for="default" class="btn btn-default">Default
+              <input type="checkbox" id="default" class="badgebox" checked><span class="badge">&check;</span></label>
+            <label for="primary" class="btn btn-primary">Primary
+              <input type="checkbox" id="primary" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="info" class="btn btn-info">Info
+              <input type="checkbox" id="info" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="success" class="btn btn-success">Success
+              <input type="checkbox" id="success" class="badgebox" checked><span class="badge">&check;</span></label>
+            <label for="warning" class="btn btn-warning">Warning
+              <input type="checkbox" id="warning" class="badgebox"><span class="badge">&check;</span></label>
+            <label for="danger" class="btn btn-danger">Danger
+              <input type="checkbox" id="danger" class="badgebox"><span class="badge">&check;</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

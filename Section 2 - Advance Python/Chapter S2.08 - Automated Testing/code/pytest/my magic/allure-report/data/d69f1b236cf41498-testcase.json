@@ -1,0 +1,44 @@
+{
+  "uid" : "d69f1b236cf41498",
+  "name" : "TestSampleWithScenarios.test_demo1[advanced]",
+  "title" : "Test demo 1 [advanced]",
+  "time" : {
+    "start" : 1494660331247,
+    "stop" : 1494660331250,
+    "duration" : 3
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "47c4c53a301b3747",
+    "name" : "try_6",
+    "title" : "Try 6"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "4464-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_6"
+  } ],
+  "parameters" : [ ]
+}

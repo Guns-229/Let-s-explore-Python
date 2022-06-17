@@ -1,0 +1,168 @@
+<html>
+  <head>
+    <title>Mayank's Flask Selenium Sample</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-git.js') }}">
+    </script>
+    <style>
+      .sections{
+        padding: 2em;
+      }
+    </style>
+  </head>
+<body>
+    <div class="sections" id="data_years">
+        <ul>
+          <li data-years="1800-1900">The 19th Century</li>
+          <li data-years="1900-2000">The 20th Century</li>
+          <li data-years="2000-2100" id="21st" style="display: none">The 21st Century</li>
+          <li><a href="#test">Test Hash</a></li>
+        </ul>
+    </div>
+    <div class="sections" id="checkboxes">
+        <form action="/action_page.php">
+          <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+          <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+          <input type="checkbox" name="vehicle" value="Plane" checked> I have a Tejas<br>
+          <input type="submit" value="Submit">
+        </form> 
+    </div>
+    <div class="sections" id="selected">
+        <select size="4">
+          <option id="apple">Apple</option>
+          <option id="orange">Orange</option>
+          <option id="pineapple" selected>Pineapple</option>
+          <option id="banana" disabled="true" style="display: none">Banana</option>
+          <option id="mango" disabled="true">mango</option>
+        </select>
+    </div>
+     <div class="sections" id="tables">
+      <div id="DarkStripedTable">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sections" id="buttons">
+      <div id="button_log"></div>
+      <button type="button" class="btn" id="button_basic">Basic</button>
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-success">Success</button>
+      <button type="button" class="btn btn-info">Info</button>
+      <button type="button" class="btn btn-warning">Warning</button>
+      <button type="button" class="btn btn-danger">Danger</button>
+      <button type="button" class="btn btn-dark">Dark</button>
+      <button type="button" class="btn btn-light">Light</button>
+      <button type="button" class="btn btn-link">Link</button> 
+    </div>
+    <div class="sections">
+      <h1>Example heading <span class="badge badge-secondary">New</span></h1>
+      <h2>Example heading <span class="badge badge-secondary">New</span></h2>
+      <h3>Example heading <span class="badge badge-secondary">New</span></h3>
+      <h4>Example heading <span class="badge badge-secondary">New</span></h4>
+      <h5>Example heading <span class="badge badge-secondary">New</span></h5>
+      <h6>Example heading <span class="badge badge-secondary">New</span></h6> 
+    </div>
+   
+    <div class="sections">
+      <div class="progress">
+        <div class="progress-bar" style="width:70%"></div>
+      </div>
+      <div class="progress" style="height:20px">
+        <div class="progress-bar" style="width:40%;height:20px"></div>
+      </div> 
+      <div id="Colored_Progress_Bars">
+        <!-- Blue -->
+        <div class="progress">
+        <div class="progress-bar" style="width:10%"></div>
+        </div>
+
+        <!-- Green -->
+        <div class="progress">
+        <div class="progress-bar bg-success" style="width:20%"></div>
+        </div>
+
+        <!-- Turquoise -->
+        <div class="progress">
+        <div class="progress-bar bg-info" style="width:30%"></div>
+        </div>
+
+        <!-- Orange -->
+        <div class="progress">
+        <div class="progress-bar bg-warning" style="width:40%"></div>
+        </div>
+
+        <!-- Red -->
+        <div class="progress">
+        <div class="progress-bar bg-danger" style="width:50%"></div>
+        </div>
+
+        <!-- White -->
+        <div class="progress border">
+        <div class="progress-bar bg-white" style="width:60%"></div>
+        </div>
+
+        <!-- Grey -->
+        <div class="progress">
+        <div class="progress-bar bg-secondary" style="width:70%"></div>
+        </div>
+
+        <!-- Light Grey -->
+        <div class="progress border">
+        <div class="progress-bar bg-light" style="width:80%"></div>
+        </div>
+
+        <!-- Dark Grey -->
+        <div class="progress">
+          <div class="progress-bar bg-dark" style="width:90%"></div>
+        </div> 
+        <div id="MultipleProgressBars">
+          <div class="progress">
+            <div class="progress-bar bg-success" style="width:40%">
+              Free Space
+            </div>
+            <div class="progress-bar bg-warning" style="width:10%">
+              Warning
+            </div>
+            <div class="progress-bar bg-danger" style="width:20%">
+              Danger
+            </div>
+          </div> 
+        </div>
+      </div>
+
+    </div> 
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#button_basic").click(function(){
+          // alert("TEST");
+          $("#button_log").text("Clicked...");
+        });
+      });
+    </script>
+</body>
+</html>

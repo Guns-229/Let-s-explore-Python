@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/jquery/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+        <link href="{{ url_for('static', filename='css/vendor/bootstrap/bootstrap_journal.min.css') }}" rel="stylesheet" type="text/css">
+        {% block header %} {% endblock %}
+    </head>
+    <body>
+        <div class="section">
+            <div class="container-fluid">{% block content %}{% endblock %}</div>
+        </div>
+        {% block jsblock %} {% endblock %}
+    </body>
+</html>

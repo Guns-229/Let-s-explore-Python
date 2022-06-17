@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block header %}
+<style type="text/css">
+/*div.imgs {
+  width: 60%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}*/
+
+figure {
+  float: left;
+  width: 30%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+</style>
+{% endblock %}
+{% block content %}
+Images
+<form >
+    <div class="form-group mb-3">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" name="file_input" id="file_input"
+                   oninput="input_filename();">
+            <label id="file_input_label" class="custom-file-label" for="image">Select file..</label>
+        </div>
+    </div>
+    <button id="upload_btn" class="btn btn-primary">Analyze</button>
+</form>
+<table id="status" class="table table-striped" style="display: none;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tasks</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td></td>
+      <td id="upload"></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td></td>
+      <td id="processing"></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td></td>
+      <td id="upload_to_bucket">the Bird</td>
+    </tr>
+  </tbody>
+</table>
+<div id="images" >
+
+</div>
+<div id="result"></div>
+
+{% endblock %}
+{% block jsblock%}
+	<script>
+		function on_success(){
+			console.log("in on_success");
+
+			if(typeof(EventSource) !== "undefined") {
+				console.log("EventSource supported by browser");
+
+				var evtSource = new EventSource('display');
+
+				evtSource.addEventListener("display", function(event) {
+					console.log(event.data, typeof(event.data));
+			        console.log(typeof(event.data));
+			        var obj1 = event.data.replace(/&quot;/ig,'"');
+			        console.log(obj1, typeof(obj1));
+		        	obj = JSON.parse(obj1);
+			   		var new_image = `<figure>
+					  <p><img src="` + obj.file_name + `"
+					    width="136" height="200"
+					    alt="Eiffel tower">
+					  <figcaption>` + obj.time_stamp + `</figcaption>
+					</figure>`;
+			    	document.getElementById("images").innerHTML += new_image;
+			    	
+				});
+
+				var evtSource = new EventSource('running_status');
+				evtSource.addEventListener("display", function(event) {
+					console.log(event.data, typeof(event.data));
+			        console.log(typeof(event.data));
+			        var obj1 = event.data.replace(/&quot;/ig,'"');
+			        console.log(obj1, typeof(obj1));
+		        	obj = JSON.parse(obj1);
+		        	Object.keys(obj).forEach(function(key) {
+					    console.log(key, obj[key]);
+					    document.getElementById(key).innerHTML = obj[key]
+					});
+				});
+			} else {
+			  document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+			}
+			// return false;
+		};
+		data = {};
+		$( "#upload_btn" ).click(function() {
+			console.log("upload clicked");
+			document.getElementById("status").style.display = "block";
+			$.ajax({
+			  type: "POST",
+			  url: "/show_images",
+			  data: data,
+			  success: on_success,
+			  dataType: "string"
+			});
+			on_success();
+			return false;
+		});
+	</script>
+{% endblock %}
+
+

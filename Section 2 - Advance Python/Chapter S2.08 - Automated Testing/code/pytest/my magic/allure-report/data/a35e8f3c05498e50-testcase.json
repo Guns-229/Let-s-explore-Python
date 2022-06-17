@@ -1,0 +1,50 @@
+{
+  "uid" : "a35e8f3c05498e50",
+  "name" : "test_skip_xfail_in_parametrize[0]",
+  "title" : "Test skip xfail in parametrize [0]",
+  "time" : {
+    "start" : 1494642759203,
+    "stop" : 1494642759216,
+    "duration" : 13
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "",
+    "stackTrace" : "value = 0\n\n    @pytest.mark.parametrize('value', [\n                                      1,\n                                      2,\n                                      5,\n                                      pytest.mark.skipif(3),\n                                      pytest.mark.xfail(0),\n                                      pytest.mark.xfail(10)\n                                      ])\n    def test_skip_xfail_in_parametrize(value):\n        'same as above_3, but has some decorators'\n    \n        if(value == 5):\n            allure.pytest_plugin.TestCase.__setattr__(\"Name\", \"EST\")\n>       assert value > 3\nE       assert 0 > 3\n\ntry_2.py:34: AssertionError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 07:39:58 2017\n\n@author: johri_m\n\r\nsame as above_3, but has some decorators",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PENDING",
+  "suite" : {
+    "uid" : "14f09bc9dcb0ad5e",
+    "name" : "try_2",
+    "title" : "Try 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "9076-MainThread"
+  } ],
+  "parameters" : [ ]
+}

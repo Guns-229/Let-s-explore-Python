@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block page_title %}send and clear{% endblock %}
+{% block body %}
+<form class="form-horizontal" action="/form_bootstrap_dropdown"  method="post">
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div id="opts" class="btn-group" data-toggle="buttons">
+        <label class="btn btn-success active">
+          <input type="radio" name="options" id="Success" autocomplete="off" checked>
+          <span class="glyphicon glyphicon-ok">Success</span>
+        </label>
+
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="primary" autocomplete="off">
+          <span class="glyphicon glyphicon-ok">primary</span>
+        </label>
+
+        <label class="btn btn-info">
+          <input type="radio" name="options" id="info" autocomplete="off">
+          <span class="glyphicon glyphicon-ok">info</span>
+        </label>
+
+        <label class="btn btn-default">
+          <input type="radio" name="options" id="default" autocomplete="off">
+          <span class="glyphicon glyphicon-ok">default</span>
+        </label>
+
+        <label class="btn btn-warning">
+          <input type="radio" name="options" id="warning" autocomplete="off">
+          <span class="glyphicon glyphicon-ok">warning</span>
+        </label>
+
+        <label class="btn btn-danger">
+          <input type="radio" name="options" id="danger" autocomplete="off">
+          <span class="glyphicon glyphicon-ok">danger</span>
+        </label>
+      
+      </div>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+</form> 
+{% endblock %}

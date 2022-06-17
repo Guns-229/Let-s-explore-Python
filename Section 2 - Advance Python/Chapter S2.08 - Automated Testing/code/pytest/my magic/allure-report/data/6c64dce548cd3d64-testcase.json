@@ -1,0 +1,50 @@
+{
+  "uid" : "6c64dce548cd3d64",
+  "name" : "test_single_feature_label",
+  "title" : "Test single feature label",
+  "time" : {
+    "start" : 1494673381905,
+    "stop" : 1494673381908,
+    "duration" : 3
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\n>>> allure_report = getfixture('allure_report')\n>>> assert_that(allure_report,\n...             all_of(\n...                 has_property('test_cases', has_length(3)),\n...                 has_property('test_groups', has_length(0))\n...             ))  # doctest: +SKIP\n\r\n\n    >>> allure_report = getfixture('allure_report')\n    >>> assert_that(allure_report,\n    ...             has_test_case('test_single_feature_label',\n    ...                 has_feature('single feature')\n    ...             ))\n    ",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "5729213335addbfa",
+    "name" : "try10",
+    "title" : "Try 10"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "feature",
+    "value" : "single feature"
+  }, {
+    "name" : "suite-name",
+    "value" : "try10"
+  }, {
+    "name" : "thread",
+    "value" : "4296-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  } ],
+  "parameters" : [ ]
+}

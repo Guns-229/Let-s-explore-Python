@@ -1,0 +1,50 @@
+{
+  "uid" : "f09063fc13bb8675",
+  "name" : "test_auto[bar-a-b]",
+  "title" : "Test auto [bar-a-b]",
+  "time" : {
+    "start" : 1494656600946,
+    "stop" : 1494656601101,
+    "duration" : 155
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "AssertionError: bar\nassert 'a' == 'b'\n  - a\n  + b",
+    "stackTrace" : "name = 'bar', left = 'a', right = 'b'\n\n    @pytest.mark.parametrize('name, left, right', [['foo', 'a', 'a'],\n                                                   ['bar', 'a', 'b'],\n                                                   ['baz', 'b', 'b']])\n    def test_auto(name, left, right):\n        @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n        def test_new(name, left, right):\n            assert left == right, name\n    \n        print(dir(allure))\n    \n>       test_new(name, left, right)\n\ntry_4.py:23: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nname = 'bar', left = 'a', right = 'b'\n\n    @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n    def test_new(name, left, right):\n>       assert left == right, name\nE       AssertionError: bar\nE       assert 'a' == 'b'\nE         - a\nE         + b\n\ntry_4.py:19: AssertionError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "6465c38f7fc55fe9",
+    "name" : "try_4",
+    "title" : "Try 4"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "8004-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4"
+  } ],
+  "parameters" : [ ]
+}

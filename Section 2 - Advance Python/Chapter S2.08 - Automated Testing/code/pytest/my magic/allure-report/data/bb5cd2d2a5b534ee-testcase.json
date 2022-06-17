@@ -1,0 +1,50 @@
+{
+  "uid" : "bb5cd2d2a5b534ee",
+  "name" : "test_auto[bar-a-b]",
+  "title" : "Test auto [bar-a-b]",
+  "time" : {
+    "start" : 1494656516219,
+    "stop" : 1494656516235,
+    "duration" : 16
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "AttributeError: module 'allure' has no attribute 'mark_with_issue'",
+    "stackTrace" : "name = 'bar', left = 'a', right = 'b'\n\n    @pytest.mark.parametrize('name, left, right', [['foo', 'a', 'a'],\n                                                   ['bar', 'a', 'b'],\n                                                   ['baz', 'b', 'b']])\n    def test_auto(name, left, right):\n        @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n        def test_new(name, left, right):\n            assert left == right, name\n    \n    \n>       allure.mark_with_issue(\"Issue 1\")\nE       AttributeError: module 'allure' has no attribute 'mark_with_issue'\n\ntry_4.py:22: AttributeError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "ac95a4cef865ca34",
+    "name" : "try_4",
+    "title" : "Try 4"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "6452-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4"
+  } ],
+  "parameters" : [ ]
+}

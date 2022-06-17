@@ -1,0 +1,11 @@
+{
+  "basics/basic_1.py::test_will_fail": true,
+  "basics/python_test.py::Test_PythonHomePage::()::test_search": true,
+  "fixtures/test_1.py::test_try_to_break_the_module_fixture_2": true,
+  "fixtures/test_pyfixture_1.py::test_eval[6*9-42]": true,
+  "fixtures/test_scope_1.py::MyTest::test_method1": true,
+  "fixtures/test_scope_1.py::MyTest::test_method2": true,
+  "fixtures/test_scope_function.py::MyTest::test_method1": true,
+  "my magic/test_5.py::test_foo[FOO-1-1]": true,
+  "my magic/test_5.py::test_foo[FOO-2--3]": true
+}

@@ -1,0 +1,42 @@
+{
+  "hosts" : [ {
+    "title" : "LP-R90C2H0L",
+    "threads" : [ {
+      "title" : "9184-MainThread",
+      "testCases" : [ {
+        "uid" : "c789004954a9cb98",
+        "name" : "TEST_mlsev",
+        "title" : "TEST mlsev",
+        "time" : {
+          "start" : 1494722426237,
+          "stop" : 1494722426268,
+          "duration" : 31
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      }, {
+        "uid" : "ebbda18f8e372f44",
+        "name" : "test_auto[bar-a-b]",
+        "title" : "Test auto [bar-a-b]",
+        "time" : {
+          "start" : 1494722426300,
+          "stop" : 1494722426487,
+          "duration" : 187
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      }, {
+        "uid" : "24c24f18a87c963a",
+        "name" : "TEST_mdbbp",
+        "title" : "TEST mdbbp",
+        "time" : {
+          "start" : 1494722426518,
+          "stop" : 1494722426550,
+          "duration" : 32
+        },
+        "severity" : "NORMAL",
+        "status" : "PASSED"
+      } ]
+    } ]
+  } ]
+}

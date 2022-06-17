@@ -1,0 +1,17 @@
+[
+  "test_basic_1.py::test_will_fail",
+  "test_basic_1.py::test_will_pass",
+  "basic_1.py::test_will_fail",
+  "basic_1.py::test_will_pass",
+  "test_basics_1_1.py::TestClass::test_string",
+  "test_basics_1_1.py::TestClass::test_validate_attr_wrong",
+  "test_basics_1_1.py::TestClass::test_validate_attr",
+  "test_basics_1_1.py::TestClass::test_validate_attr_1",
+  "test_basics_1_1.py::TestClass::testvalidate_attr",
+  "test_class_1.py::TestClass::test_string",
+  "test_class_1.py::TestClass::test_validate_attr_wrong",
+  "test_class_1.py::TestClass::test_validate_attr",
+  "test_class_2.py::TestClass::test_numbers_5_6",
+  "test_class_2.py::TestClass::test_strings_b_2",
+  "test_fixture_1.py::test_my_fixture"
+]

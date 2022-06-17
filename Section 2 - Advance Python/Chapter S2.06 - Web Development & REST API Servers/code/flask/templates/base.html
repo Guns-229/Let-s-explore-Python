@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+        {% block header %} {% endblock %}
+    </head>
+    <body>
+        <div class="section">
+            <div class="container-fluid">{% block content %}{% endblock %}</div>
+        </div>
+        {% block jsblock %} {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,9 @@
+include mayadiff/doc/*.*
+include mayadiff/opt.conf
+include mayadiff/report_files/*
+include mayadiff/report_files/css/*.*
+include mayadiff/report_files/images/*.*
+include mayadiff/report_files/js/*.*
+
+
+

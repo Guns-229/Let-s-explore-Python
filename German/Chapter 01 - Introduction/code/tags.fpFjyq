@@ -1,0 +1,16 @@
+x	add.py	/^x = 34 - 23$/;"	v
+y	add.py	/^y = "!!! Say"$/;"	v
+z	add.py	/^z = 3.45$/;"	v
+x	add.py	/^x = x + 1$/;"	v
+y	add.py	/^y = y + " Cheese !!!"$/;"	v
+a	equating.py	/^a = 'Amit Shrivastava'$/;"	v
+b	equating.py	/^b = ['A', 'm', 'i', 't', ' ', 'S', 'h', 'r', 'i', 'v', 'a', 's',$/;"	v
+main	forhell.c	/^void main(){for(int x;x<10;x++){for(int y=0;y>-10;y--){prinf("%d,%d", x, y);}}}$/;"	f
+locals_vars	import_local_vars.py	/^import locals_vars$/;"	i
+instruments	instruments.py	/^instruments = ['Drums', 'Flute', 'Harmonium', "Guitar"]$/;"	v
+users	keyvalue.py	/^users = {$/;"	v
+test	locals_vars.py	/^def test():$/;"	f
+sys	refer.py	/^import sys$/;"	i
+x	refer.py	/^x = 10$/;"	v
+mass_kg	req.py	/^mass_kg = int(input("What is your mass in kilograms?" ))$/;"	v
+mass_stone	req.py	/^mass_stone = mass_kg * 2.2 \/ 14$/;"	v

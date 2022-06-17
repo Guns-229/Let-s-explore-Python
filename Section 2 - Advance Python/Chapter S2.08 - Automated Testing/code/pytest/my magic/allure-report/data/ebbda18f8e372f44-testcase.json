@@ -1,0 +1,53 @@
+{
+  "uid" : "ebbda18f8e372f44",
+  "name" : "test_auto[bar-a-b]",
+  "title" : "Test auto [bar-a-b]",
+  "time" : {
+    "start" : 1494722426300,
+    "stop" : 1494722426487,
+    "duration" : 187
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "AssertionError: bar\nassert 'a' == 'b'\n  - a\n  + b",
+    "stackTrace" : "name = 'bar', left = 'a', right = 'b'\n\n    @pytest.allure.story(\"TEST 2\")\n    @pytest.mark.parametrize('name, left, right', [['foo', 'a', 'a'],\n                                                   ['bar', 'a', 'b'],\n                                                   ['baz', 'b', 'b']])\n    def test_auto(name, left, right):\n    \n        @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n        def test_new(name, left, right):\n            assert left == right, name\n        # pytest.allure.severity_level\n    \n        def myd():\n            print(\"Myd\")\n        # pytest.allure._allurelistener.test = myd()\n    \n        # allure_test.labels.append(\"<severity>pytest.allure.severity_level.CRITICAL</severity>\")\n        # print(\"Name: \", pytest.allure._allurelistener.test.name)\n        # print(dir()\n        # print(dir(allure.issue(\"TEST\")))\n>       test_new(name, left, right)\n\ntry_4_1.py:49: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nname = 'bar', left = 'a', right = 'b'\n\n    @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n    def test_new(name, left, right):\n>       assert left == right, name\nE       AssertionError: bar\nE       assert 'a' == 'b'\nE         - a\nE         + b\n\ntry_4_1.py:38: AssertionError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "8691425f234b27b4",
+    "name" : "try_4_1",
+    "title" : "Try 4 1"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4_1"
+  }, {
+    "name" : "story",
+    "value" : "TEST 2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "9184-MainThread"
+  } ],
+  "parameters" : [ ]
+}

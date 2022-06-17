@@ -1,0 +1,2 @@
+wx_py
+Sqlalchemy==1.3.2

@@ -1,0 +1,10 @@
+{
+  "basic_1.py::test_will_fail": true,
+  "python_test.py": true,
+  "test_basic_1.py::test_will_fail": true,
+  "test_basics_1_1.py::TestClass::()::test_validate_attr_wrong": true,
+  "test_class_1.py::TestClass::()::test_validate_attr_wrong": true,
+  "test_class_2.py::TestClass::()": true,
+  "test_class_2.py::TestClass::test_numbers_5_6": true,
+  "test_class_2.py::TestClass::test_strings_b_2": true
+}

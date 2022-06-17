@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block page_title %}send and clear{% endblock %}
+{% block body %}
+<div class="container">
+
+    Windows Machines
+    <select id="windows">
+        <option disabled selected value> -- select an option -- </option>
+        {% for lang in machines if machines.os == 'windows' %}
+              <option value="{{ lang }}">{{ lang }}</option>
+        {% endfor %}
+    </select>
+    Linux Machines
+    <select id="linux">
+        {% for lang in machines if machines.os == 'linux' %}
+              <option value="{{ lang }}">{{ lang }}</option>
+        {% endfor %}
+    </select>
+    <h1 id="welcome_msg"></h1>
+</div>
+<script>
+$('select').on('change', function() {
+    $.ajax({
+        url: 'welcome',
+        dataType: 'json',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({'lang': this.value}),
+        success: function( data, textStatus, jQxhr ){
+            $("#welcome_msg").text(data['msg']);
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+        }
+    });
+
+})
+</script>
+{% endblock %}

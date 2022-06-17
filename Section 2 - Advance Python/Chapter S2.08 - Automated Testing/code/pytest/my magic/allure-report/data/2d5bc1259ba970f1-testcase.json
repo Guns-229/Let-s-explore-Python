@@ -1,0 +1,44 @@
+{
+  "uid" : "2d5bc1259ba970f1",
+  "name" : "test_it[TESTCASE2-testdata1]",
+  "title" : "Test it [TESTCASE2-testdata1]",
+  "time" : {
+    "start" : 1494678837428,
+    "stop" : 1494678837435,
+    "duration" : 7
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "59afc00b1eb9607b",
+    "name" : "try_11",
+    "title" : "Try 11"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_11"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "8548-MainThread"
+  } ],
+  "parameters" : [ ]
+}

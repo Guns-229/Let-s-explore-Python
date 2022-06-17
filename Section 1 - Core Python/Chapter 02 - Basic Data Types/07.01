@@ -1,0 +1,2427 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Dictionary"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A dictionary is a ordered collection of associations of a **unique** key and its corresponding value. Similar to list they are also mutable.\n",
+    "\n",
+    "The key must be an **hashable** type such as numeric data types, strings, most `tuples`. \n",
+    "The items of dictionaries can be either **mutable** or **immutable**. .\n",
+    "\n",
+    "**Syntax:**\n",
+    "```python\n",
+    "dictionary = {'a': a, 'b': b, ..., 'z': z}\n",
+    "```\n",
+    "**Structure:**\n",
+    "\n",
+    "| keys (hashables) | Values (Any Data type) |\n",
+    "|-------------|-------------------------|\n",
+    "| \"Users\" | \"Rakesh\" |\n",
+    "| \"Color\" | \"Sky Blue | \n",
+    "| 1   | True | \n",
+    "| True | `[12,32]` |\n",
+    "\n",
+    "**Summary:**\n",
+    "- **Orders collection** of key/value pairs\n",
+    "- Keys are \n",
+    "    - unique\n",
+    "    - hashables\n",
+    "- Values have no restriction"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Example of a dictionary:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_folders = {\n",
+    "                'conf_folder': '/etc', \n",
+    "                'home': '/home/{{username}}', \n",
+    "                'logs': \"/var/logs/{{app_name}}\"\n",
+    "               }"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Acessing elements:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/etc\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Directly using key\n",
+    "print(base_folders['conf_folder'])  # Similar to list but instead of index we use key"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/home/{{username}}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Using `get` function to retrive the value\n",
+    "print(base_folders.get('home'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Error 'Blabla'\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Trying to access a key which do not exists\n",
+    "# will result in error's\n",
+    "\n",
+    "try:\n",
+    "    print(base_folders['Blabla'])\n",
+    "except Exception as e:\n",
+    "    print(\"Error\", e)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Default Value\n"
+     ]
+    }
+   ],
+   "source": [
+    "# If the key `Blabla` does not exist them `Default Value` is returned \n",
+    "# by the `get` function instead of raising an exception.\n",
+    "\n",
+    "print(base_folders.get('Blabla', \"Default Value\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Adding/Updating elements:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'conf_folder': '/etc', 'home': '/Users/mayank', 'logs': '/var/logs/{{app_name}}'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Updating existing key/value pair\n",
+    "\n",
+    "base_folders['home'] = '/Users/mayank'\n",
+    "print(base_folders)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If the key is not present than key/value pair will be created else, existing value will be updated. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'conf_folder': '/etc', 'home': '/Users/mayank', 'logs': '/var/logs/{{app_name}}', 'user_logs': '~/config/logs'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Adding new key/value pair\n",
+    "\n",
+    "base_folders['user_logs'] = '~/config/logs'\n",
+    "print(base_folders)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Removing an element from a dictionary:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### `del` keyword"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'conf_folder': '/etc', 'home': '/Users/mayank', 'user_logs': '~/config/logs'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "del base_folders['logs']\n",
+    "print(base_folders)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### using `pop(key)`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "ename": "KeyError",
+     "evalue": "'user_logs'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mKeyError\u001b[0m                                  Traceback (most recent call last)",
+      "Input \u001b[0;32mIn [8]\u001b[0m, in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0m user_logs \u001b[38;5;241m=\u001b[39m \u001b[43mbase_folders\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mpop\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m'\u001b[39;49m\u001b[38;5;124;43muser_logs\u001b[39;49m\u001b[38;5;124;43m'\u001b[39;49m\u001b[43m)\u001b[49m\n\u001b[1;32m      2\u001b[0m \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;124mf\u001b[39m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;132;01m{\u001b[39;00muser_logs\u001b[38;5;132;01m=}\u001b[39;00m\u001b[38;5;124m\"\u001b[39m)\n\u001b[1;32m      3\u001b[0m \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;124mf\u001b[39m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;132;01m{\u001b[39;00mbase_folders\u001b[38;5;132;01m=}\u001b[39;00m\u001b[38;5;124m\"\u001b[39m)\n",
+      "\u001b[0;31mKeyError\u001b[0m: 'user_logs"],
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'base_folders' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-8-a0cfd6508e8a>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0muser_logs\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mbase_folders\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpop\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'user_logs'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34mf\"{user_logs=}\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34mf\"{base_folders=}\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'base_folders' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "user_logs = base_folders.pop('user_logs')\n",
+    "print(f\"{user_logs=}\")\n",
+    "print(f\"{base_folders=}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "KeyError",
+     "evalue": "'user_logs'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mKeyError\u001b[0m                                  Traceback (most recent call last)",
+      "Input \u001b[0;32mIn [9]\u001b[0m, in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[38;5;66;03m# This time it will fail as the key `user_logs` is not longer valid.\u001b[39;00m\n\u001b[0;32m----> 3\u001b[0m user_logs \u001b[38;5;241m=\u001b[39m \u001b[43mbase_folders\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mpop\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m'\u001b[39;49m\u001b[38;5;124;43muser_logs\u001b[39;49m\u001b[38;5;124;43m'\u001b[39;49m\u001b[43m)\u001b[49m\n\u001b[1;32m      4\u001b[0m \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;124mf\u001b[39m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;132;01m{\u001b[39;00muser_logs\u001b[38;5;132;01m=}\u001b[39;00m\u001b[38;5;124m\"\u001b[39m)\n\u001b[1;32m      5\u001b[0m \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;124mf\u001b[39m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;132;01m{\u001b[39;00mbase_folders\u001b[38;5;132;01m=}\u001b[39;00m\u001b[38;5;124m\"\u001b[39m)\n",
+      "\u001b[0;31mKeyError\u001b[0m: 'user_logs'"
+     ]
+    }
+   ],
+   "source": [
+    "# This time it will fail as the key `user_logs` is not longer valid.\n",
+    "\n",
+    "user_logs = base_folders.pop('user_logs')\n",
+    "print(f\"{user_logs=}\")\n",
+    "print(f\"{base_folders=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Using `popitem`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are cases where we have to remove all the processed items from the dictionary. In these cases we can use `popitem` as shown below"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_folders = {'conf_folder': '/etc', \n",
+    "                'home': '/home/{{username}}', \n",
+    "                'logs': \"/var/logs/{{app_name}}\"}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "key = 'logs' - value = '/var/logs/{{app_name}}'\n",
+      "key = 'home' - value = '/home/{{username}}'\n",
+      "key = 'conf_folder' - value = '/etc'\n",
+      "{}\n"
+     ]
+    }
+   ],
+   "source": [
+    "while base_folders:\n",
+    "    key, value = base_folders.popitem()\n",
+    "    print(f\"{key = } - {value = }\")\n",
+    "\n",
+    "print(base_folders)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "From the above example, we can see that it removes & return a (key, value) pair and they are returned in LIFO (last-in, first-out) order.\n",
+    "\n",
+    "Also note, that calling `popitem` on an empty dictionary will raise `KeyError` as shown in below example"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Error: 'popitem(): dictionary is empty'\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    key, value = base_folders.popitem()\n",
+    "    print(f\"{key = } - {value = }\")\n",
+    "except KeyError as e:\n",
+    "    print(f\"Error: {e}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Using `popitem`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are cases where we have to remove all the processed items from the dictionary. In these cases we can use `popitem` as shown below"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_folders = {'conf_folder': '/etc', \n",
+    "                'home': '/home/{{username}}', \n",
+    "                'logs': \"/var/logs/{{app_name}}\"}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "key = 'logs' - value = '/var/logs/{{app_name}}'\n",
+      "key = 'home' - value = '/home/{{username}}'\n",
+      "key = 'conf_folder' - value = '/etc'\n",
+      "{}\n"
+     ]
+    }
+   ],
+   "source": [
+    "while base_folders:\n",
+    "    key, value = base_folders.popitem()\n",
+    "    print(f\"{key = } - {value = }\")\n",
+    "\n",
+    "print(base_folders)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "From the above example, we can see that it removes & return a (key, value) pair and they are returned in LIFO (last-in, first-out) order.\n",
+    "\n",
+    "Also note, that calling `popitem` on an empty dictionary will raise `KeyError` as shown in below example"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Error: 'popitem(): dictionary is empty'\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    key, value = base_folders.popitem()\n",
+    "    print(f\"{key = } - {value = }\")\n",
+    "except KeyError as e:\n",
+    "    print(f\"Error: {e}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Using `popitem`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are cases where we have to remove all the processed items from the dictionary. In these cases we can use `popitem` as shown below"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "base_folders = {'conf_folder': '/etc', \n",
+    "                'home': '/home/{{username}}', \n",
+    "                'logs': \"/var/logs/{{app_name}}\"}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "key = 'logs' - value = '/var/logs/{{app_name}}'\n",
+      "key = 'home' - value = '/home/{{username}}'\n",
+      "key = 'conf_folder' - value = '/etc'\n",
+      "{}\n"
+     ]
+    }
+   ],
+   "source": [
+    "while base_folders:\n",
+    "    key, value = base_folders.popitem()\n",
+    "    print(f\"{key = } - {value = }\")\n",
+    "\n",
+    "print(base_folders)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "From the above example, we can see that it removes & return a (key, value) pair and they are returned in LIFO (last-in, first-out) order.\n",
+    "\n",
+    "Also note, that calling `popitem` on an empty dictionary will raise `KeyError` as shown in below example"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Error: 'popitem(): dictionary is empty'\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    key, value = base_folders.popitem()\n",
+    "    print(f\"{key = } - {value = }\")\n",
+    "except KeyError as e:\n",
+    "    print(f\"Error: {e}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Getting the items, keys and values:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "items: dict_items([('Dabar', 'Honey'), ('Patanjali', 'Desi Ghee'), ('Pidilite', 'Fevicol')])\n",
+      "keys: dict_keys(['Dabar', 'Patanjali', 'Pidilite'])\n",
+      "values: dict_values(['Honey', 'Desi Ghee', 'Fevicol'])\n"
+     ]
+    }
+   ],
+   "source": [
+    "brands = {\n",
+    "    \"Dabar\": \"Honey\",\n",
+    "    \"Patanjali\": \"Desi Ghee\",\n",
+    "    \"Pidilite\": \"Fevicol\"\n",
+    "}\n",
+    "\n",
+    "items = brands.items()  # This will return key/value pair\n",
+    "keys = brands.keys()    # This will return only keys\n",
+    "values = brands.values()  # This will return only values\n",
+    "\n",
+    "print(\"items:\", items)\n",
+    "print(\"keys:\", keys)\n",
+    "print(\"values:\", values)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Other Hashable elements as key"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{(1, 2, 3): 'Welcome', (2, 3, 4): 'Kind'} Welcome\n"
+     ]
+    }
+   ],
+   "source": [
+    "# using tuple as key :)\n",
+    "# The tuple should be hashable. \n",
+    "\n",
+    "my_ci = {(1, 2, 3): \"Welcome\", (2, 3, 4): 'Kind'}\n",
+    "print(my_ci, my_ci[(1,2,3)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Error: unhashable type: 'list'\n"
+     ]
+    }
+   ],
+   "source": [
+    "# The tuple should be hashable. \n",
+    "\n",
+    "try:\n",
+    "    my_ci = {(1, [2], 3): \"Welcome\", (2,3,4): 'Kind'}\n",
+    "    print(my_ci[(1,2,3)])\n",
+    "    \n",
+    "except Exception as e:\n",
+    "    print(\"Error:\", e)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In the above example, we tried to have a key `(1, [2], 3)`, but as it contains a mutable element `[2]` thus is not a hashable data type"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Multiple keys value with same val  or same hash value "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "First key in key/value pair and last value will become the final key/value pair. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "brands={'name': 'New Dabar', 'product': 'Honey'}\n",
+      "len(brands)=2\n"
+     ]
+    }
+   ],
+   "source": [
+    "## !!! Gotcha's !!!\n",
+    "\n",
+    "brands = {'name': 'Dabar', 'name': 'New Dabar', 'product': 'Honey'}\n",
+    "\n",
+    "print(f\"{brands=}\")\n",
+    "print(f\"{len(brands)=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "> **NOTE**: \n",
+    "> the latest one will override the previous key/values as shown in the above example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Dictonary with `for` loop"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "progs = {\n",
+    "    \"India\": \"Chennai\",\n",
+    "    \"South Africa\": \"Sant Petersberg\",\n",
+    "    \"England\": \"London\"\n",
+    "}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### keys"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# only keys will be returned. \n",
+    "for a in progs:\n",
+    "    print(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# The above code is equivalent to this\n",
+    "\n",
+    "for a in progs.keys():\n",
+    "    print(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"Keys \\t=> Values\")\n",
+    "for a in progs.keys():\n",
+    "    print(\"{key} => {val}\".format(key=a, val=progs[a]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "print(\"Keys \\t=> Values\")\n",
+    "for a in progs:\n",
+    "    print(\"{key}\\t=> {val}\".format(key=a, val=progs[a]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### `items` "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for key, val in progs.items():\n",
+    "    print(key, val)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### values"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "> **NOTE**: You can/should not get `keys` from  `values`, because values can be duplicate. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for val in progs.values():\n",
+    "    print(val)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "progs = {\n",
+    "    \"India\": \"Chennai\",\n",
+    "    \"South Africa\": \"Sant Petersberg\",\n",
+    "    \"England\": \"London\"\n",
+    "}\n",
+    "\n",
+    "# More progs\n",
+    "progs['Bangaladesh'] = \"Dhaka\"\n",
+    "\n",
+    "print(progs)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Delete a key/value pair"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can use the `del` command to delete the `key/value` pair from the `dictionary`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "progs={'India': 'Chennai', 'South Africa': 'Sant Petersberg', 'England': 'London', 'Bangaladesh': 'Dhaka'}\n",
+      "progs={'India': 'Chennai', 'South Africa': 'Sant Petersberg', 'Bangaladesh': 'Dhaka'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "progs = {'India': 'Chennai', 'South Africa': 'Sant Petersberg', 'England': 'London', 'Bangaladesh': 'Dhaka'}\n",
+    "print(f\"{progs=}\")\n",
+    "\n",
+    "del progs[\"England\"]\n",
+    "print(f\"{progs=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Attributes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this section, we will cover few of the dictionary attributes, "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "####  `clear`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "d = {1: 2}\n",
+      "d = {}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# To clear the dictionary content\n",
+    "d = {1:2}\n",
+    "\n",
+    "print(f\"{d = }\")\n",
+    "d.clear()\n",
+    "print(f\"{d = }\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### `copy`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "d = {1: 'Ja, Ich bin Ein Mann'}\n",
+      "d = {1: 'Ja, Ich bin Ein Mann'} and a = {1: 'Ja, Ich bin Ein Mann'}\n",
+      "a is d = False\n",
+      "a[1] is d[1] = True\n"
+     ]
+    }
+   ],
+   "source": [
+    "# It creates a shallow copy of the dictionary \n",
+    "\n",
+    "d = {1:\"Ja, Ich bin Ein Mann\"}\n",
+    "\n",
+    "print(f\"{d = }\")\n",
+    "a = d.copy()\n",
+    "print(f\"{d = } and {a = }\")\n",
+    "print(f\"{a is d = }\")\n",
+    "print(f\"{a[1] is d[1] = }\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### `fromkeys`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "`fromkeys` helps in creating a new dictionary with \n",
+    " - keys from the iterable \n",
+    " - values set to value. If value are not provided then `None` is provided. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "words_count = {'You': None, 'have': None, 'the': None, 'right': None, 'to': None, 'work,': None, 'but': None, 'never': None, 'fruit': None, 'of': None, 'work': None}\n"
+     ]
+    }
+   ],
+   "source": [
+    "msg = \"You have the right to work, but never to the fruit of work\"\n",
+    "\n",
+    "words_count = dict.fromkeys(msg.split()) \n",
+    "print(f\"{words_count = }\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{1: 'default val', 2: 'default val', 3: 'default val', 4: 'default val', 5: 'default val'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "key = [1, 2, 3, 4, 5]\n",
+    "val = \"default val\"\n",
+    "\n",
+    "kv = dict.fromkeys(key, val)\n",
+    "print(kv)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 67,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "words_count = {'You': 1, 'have': 1, 'the': 2, 'right': 1, 'to': 2, 'work': 2, 'but': 1, 'never': 1, 'fruit': 1, 'of': 1}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Counting the word in a message using fromkeys\n",
+    "\n",
+    "msg = \"You have the right to work, but never to the fruit of work\"\n",
+    "\n",
+    "words_count = {key: msg.count(key) for key in dict.fromkeys(msg.replace(\",\", \"\").split())}\n",
+    "\n",
+    "print(f\"{words_count = }\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### `setdefault`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If key is in the dictionary, return its value. If not, insert key with a value of default and return default. default defaults to None."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 69,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "words_count.setdefault('the') = 2\n",
+      "words_count.setdefault('non existing') = '3'\n",
+      "words_count.setdefault('not existing', 'the') = 'the'\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f\"{words_count.setdefault('the') = }\")\n",
+    "print(f\"{words_count.setdefault('non existing') = }\")\n",
+    "\n",
+    "print(f\"{words_count.setdefault('not existing', 'the') = }\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 90,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "words_count = {'You': 1, 'have': 1, 'the': 2, 'right': 1, 'to': 2, 'work': 2, 'but': 1, 'never': 1, 'fruit': 1, 'of': 1, 'non existing': '3', 'not existing': 'the'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f\"{words_count = }\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 94,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "None {}\n",
+      "None {'key': ['value']}\n"
+     ]
+    }
+   ],
+   "source": [
+    "key, value = \"key\", \"value\"\n",
+    "data = {}\n",
+    "x = data.get(key,[]).append(value)\n",
+    "print( x, data )#None {})\n",
+    "data= {}\n",
+    "x = data.setdefault(key,[]).append(value)\n",
+    "print (x, data ) # None {'key': ['value']}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### `update`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Update the dictionary with the key/value pairs from other, overwriting existing keys. Return None."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'You': 1, 'have': 1, 'the': 2, 2: 3, 4: 5}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Adding new key/value pairs\n",
+    "sample = {'You': 1, 'have': 1, 'the': 2}\n",
+    "sample.update({2: 3, 4: 5})\n",
+    "\n",
+    "print(sample)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'You': 1, 'have': 1, 'the': 3, 'we': 5}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# another example.\n",
+    "\n",
+    "sample = {'You': 1, 'have': 1, 'the': 2}\n",
+    "sample.update( the = 3, we= 5)\n",
+    "\n",
+    "print(sample)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'You': 10, 'have': 1, 'the': 2}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Updating existing value\n",
+    "\n",
+    "sample = {'You': 1, 'have': 1, 'the': 2}\n",
+    "sample.update({'You': 10})\n",
+    "\n",
+    "print(sample)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Nested Dictionary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "multid = {'school': 'DMS', 'students_details': {1001: {'name': 'Mayank', 'age': 44}, 1002: {'name': 'Vishal Saxena', 'age': 44}, 1003: {'name': 'Rajeev Chaturvedi', 'age': 43}}}\n"
+     ]
+    }
+   ],
+   "source": [
+    "multid = {\n",
+    "    'school': 'DMS',\n",
+    "    'students_details': {\n",
+    "        1001: {\n",
+    "            \"name\": \"Mayank\",\n",
+    "            \"age\": 44\n",
+    "        },\n",
+    "        1002: {\n",
+    "            \"name\" : \"Vishal Saxena\",\n",
+    "            \"age\": 44\n",
+    "        },\n",
+    "        1003: {\n",
+    "            \"name\": \"Rajeev Chaturvedi\",\n",
+    "            \"age\": 43\n",
+    "        }\n",
+    "      }\n",
+    "    }\n",
+    "\n",
+    "print(f\"{multid = }\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "multid['students_details'][1001] = {'name': 'Mayank', 'age': 44}\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f\"{multid['students_details'][1001] = }\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "multid['students_details'][1002]['name']='Vishal Saxena'\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f\"{multid['students_details'][1002]['name']=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Handling non existing `keys` "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 69,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Error: Key now found\n"
+     ]
+    }
+   ],
+   "source": [
+    "progs = {\n",
+    "    \"India\": \"Chennai\",\n",
+    "    \"South Africa\": \"Sant Petersberg\",\n",
+    "    \"England\": \"London\"\n",
+    "}\n",
+    "\n",
+    "try:\n",
+    "    print(progs[\"Nepal\"])\n",
+    "except KeyError:\n",
+    "    print(\"Error: Key now found\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Key not found\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 1: Solution : Find the key in the dictionary before accessing it.\n",
+    "\n",
+    "if \"Nepal\" in progs:\n",
+    "    print(f\"{progs['Nepal']=}\")\n",
+    "else:\n",
+    "    print(\"Key not found\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 72,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello: Chennai\n"
+     ]
+    }
+   ],
+   "source": [
+    "if \"India\" in progs:\n",
+    "    print(\"Hello:\", progs[\"India\"])\n",
+    "else:\n",
+    "    print(\"Key not found\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "we can use `get` attribute of `dictionary` to get the values as shown in the below example. In this example, we will be returned with default set value if no key is found. In below case it will return value `NonExistingKey` "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 77,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sorry, key not found\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(progs.get(\"Nepal\", \"Sorry, key not found\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 75,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Chennai\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(progs.get(\"India\", \"Non Existing Key\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### More dictionary Examples."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "multid = {'school': 'DMS',\n",
+    "          'students_details': {\n",
+    "              \"students\": \n",
+    "                  [\n",
+    "                      \"Mayank\",\n",
+    "                      \"Vishal\",\n",
+    "                      \"Rajeev\"\n",
+    "                  ]\n",
+    "          }}\n",
+    "print(multid)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# traversing with duplicate keys\n",
+    "\n",
+    "dupli = {\n",
+    "    \"meme\" : \"mjmj\",\n",
+    "    \"test\" : \"TESt value\",\n",
+    "    \"meme\" : \"wewe\"\n",
+    "}\n",
+    "\n",
+    "print(dupli)\n",
+    "for k in dupli:\n",
+    "    print(k)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "# # Matrix in form of string\n",
+    "# matrix = '''0 0 0 0 0 0 0 0 0 0 0 0\n",
+    "# 9 0 0 0 0 0 0 0 0 0 0 0\n",
+    "# 0 0 0 0 0 0 0 0 0 4 0 0\n",
+    "# 0 0 0 0 0 0 0 3 0 0 0 0\n",
+    "# 0 0 0 0 0 0 5 0 0 0 0 0\n",
+    "# 0 0 0 0 6 0 0 0 0 0 0 0'''\n",
+    "\n",
+    "# mat = {}\n",
+    "\n",
+    "# # split the matrix in lines\n",
+    "# for row, line in enumerate(matrix.splitlines()):\n",
+    "\n",
+    "#     # Splits the line int cols\n",
+    "#     for col, column in enumerate(line.split()):\n",
+    "\n",
+    "#         column = int(column)\n",
+    "#         # Places the column in the result,\n",
+    "#         # if it is differente from zero\n",
+    "#         if column:\n",
+    "#             mat[row, col] = column\n",
+    "\n",
+    "# print (mat)\n",
+    "# # The counting starts with zero\n",
+    "# print ('Complete matrix size:', (row + 1) * (col + 1))\n",
+    "# print ('Sparse matrix size:', len(mat))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Creating dictionary, continued."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "> **NOTE**: One can create dictionary using the following methods as well"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 80,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'mayank': 'johri', 'Ashwini': 'Johri', 'Rahul': 'Johri'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# dictionary = dict(key1=value1, key2=value2, ...)\n",
+    "\n",
+    "names = dict(mayank=\"johri\", Ashwini=\"Johri\", Rahul=\"Johri\")\n",
+    "print(names)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```python\n",
+    "# !!! Gotcha !!!\n",
+    "# It will fail to handle complex data type as keys\n",
+    "\n",
+    "    names = dict((\"mayank\", \"test\")=\"johri\", ashwini=\"johri\", Rahul=\"Johri\")\n",
+    "    print(names)\n",
+    "```\n",
+    "Output:\n",
+    "```\n",
+    "  File \"<ipython-input-15-bd2bbfe31949>\", line 3\n",
+    "    names = dict((\"mayank\", \"test\")=\"johri\", ashwini=\"johri\", Rahul=\"Johri\")\n",
+    "                ^\n",
+    "SyntaxError: keyword can't be an expression\n",
+    "\n",
+    "```\n",
+    "also, following will fail\n",
+    "\n",
+    "```python\n",
+    "names = dict(10=\"johri\", Ashwini=\"Johri\", Rahul=\"Johri\")\n",
+    "print(names)\n",
+    "```\n",
+    "**output:**\n",
+    "```python\n",
+    "  File \"<ipython-input-83-d89badeca7da>\", line 1\n",
+    "    names = dict(10=\"johri\", Ashwini=\"Johri\", Rahul=\"Johri\")\n",
+    "                 ^\n",
+    "SyntaxError: expression cannot contain assignment, perhaps you meant \"==\"\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'mayank': 'johri', 'ashwini': 'johri', 'Rahul': 'Johri'} <class 'dict'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "# dictionary = dict([(key1, value1), (key2, value2), ...])\n",
+    "\n",
+    "names = dict([(\"mayank\",\"johri\"), (\"ashwini\", \"johri\"), (\"Rahul\",\"Johri\")])\n",
+    "print(names, type(names))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{('mayank', 'test'): 'johri', 'ashwini': 'johri', 'Rahul': 'Johri'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# It can handle tuples as key also\n",
+    "\n",
+    "names = dict([((\"mayank\", \"test\"),\"johri\"), (\"ashwini\", \"johri\"), (\"Rahul\",\"Johri\")])\n",
+    "print(names)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Creating a dict from two lists"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 88,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'mayank': '100', 'roshan': '10000', 'GV': '10000', 'kv_pauly': '20000'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Same number of elements in both the lists.\n",
+    "\n",
+    "lst_keys = ['mayank', 'roshan', 'GV', 'kv_pauly']\n",
+    "lst_vals = ['100', '10000', '10000', '20000']\n",
+    "\n",
+    "ke_va = dict(zip(lst_keys, lst_vals))\n",
+    "print(ke_va)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 89,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'mayank': '100', 'roshan': '10000', 'GV': '10000', 'kv_pauly': '20000'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Less keys than values\n",
+    "\n",
+    "lst_keys = ['mayank', 'roshan', 'GV', 'kv_pauly']\n",
+    "lst_vals = ['100', '10000', '10000', '20000', '99999']\n",
+    "\n",
+    "ke_va = dict(zip(lst_keys, lst_vals))\n",
+    "print(ke_va) # '99999' is missing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 92,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'KV Pauly': '33300', 'Roshan': '10000', 'GV': '10000'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# more keys than value\n",
+    "\n",
+    "lst_keys = ['KV Pauly', 'Roshan', 'GV', 'mayank']\n",
+    "lst_vals = ['33300', '10000', '10000']\n",
+    "\n",
+    "ke_va = dict(zip(lst_keys, lst_vals))\n",
+    "print(ke_va)  # `mayank` is missing "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 94,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ke_va={'Roshan': '10000', 'G.V.': '10000', 'K.V. Pauly': '20000', 'Fill Value': 299} \n",
+      "len(ke_va)=4\n"
+     ]
+    }
+   ],
+   "source": [
+    "# !!! Very bad idea !!!\n",
+    "# Value list is larger than key list\n",
+    "\n",
+    "from itertools import zip_longest as zipl\n",
+    "\n",
+    "lst_keys = ['Roshan', 'G.V.', 'K.V. Pauly']             # Only 3 keys\n",
+    "lst_vals = ['10000', '10000', '20000', '99999', 299]    # and 5 Values\n",
+    "\n",
+    "ke_va = dict(zipl(lst_keys, lst_vals, fillvalue=\"Fill Value\"))\n",
+    "\n",
+    "print(f\"{ke_va=} \\n{len(ke_va)=}\")  \n",
+    "\n",
+    "## Note that missing 0/99999 key_value pair. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ke_va={'Roshan': '100', 'G.V.': '10000', 'K.V. Pauly': '10000', 'Dr. Ashiwini': [200, 200], 'Rahul': [200, 200]} \n",
+      "len(ke_va)=5\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Value list is smaller than key list\n",
+    "\n",
+    "from itertools import zip_longest as zipl\n",
+    "\n",
+    "lst_keys = ['Roshan', 'G.V.', 'K.V. Pauly', \"Dr. Ashiwini\", \"Rahul\"]\n",
+    "lst_vals = ['100', '10000', '10000']\n",
+    "\n",
+    "ke_va = dict(zipl(lst_keys, lst_vals, fillvalue=[200, 200]))\n",
+    "\n",
+    "print(f\"{ke_va=} \\n{len(ke_va)=}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 97,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# # My failed experiment for have unique values as fillvalue :)\n",
+    "#Thus commented\n",
+    "\n",
+    "# from itertools import zip_longest as zipl\n",
+    "\n",
+    "# lst_keys = ['mayank', 'roshan', 'GV', 'kv_pauly', \"Dr. Ashiwini\"]\n",
+    "# lst_vals = ['100', '10000', '10000']\n",
+    "# x = 100\n",
+    "\n",
+    "# def popu():\n",
+    "#     print(\"inside popu...\")\n",
+    "#     global x\n",
+    "#     x = x +1\n",
+    "#     return x\n",
+    "\n",
+    "# ke_va = dict(zipl(lst_keys, lst_vals, fillvalue=popu()))\n",
+    "# print(ke_va)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "There are few more methods to create a dictionary which will be covered in `functional programming`.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Lets check below two examples and see what is happening"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Blank Dictionary\n",
+    "\n",
+    "d = dict()\n",
+    "\n",
+    "d_blank = {}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{10.1: 'TEST', 10: 'test', 10.5: 'really testing', 20: 'Testing completed'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# lets populate the dictionary\n",
+    "\n",
+    "d[10.1] = \"TEST\"\n",
+    "d[10] = \"test\"  \n",
+    "d[10.5] = \"really testing\"\n",
+    "d[20] = \"Testing completed\"\n",
+    "\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "d = dict()\n",
+    "lst = [(10.0, \"TEST\"), (22, \"tt\"), (33, \"trtr\")]\n",
+    "\n",
+    "for key, val in lst:\n",
+    "    d[key] = val\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{10.0: 'Ja', 22: 'tt', 33: 'trtr'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "d = dict()\n",
+    "lst = [(10.0, \"TEST\"), (22, \"tt\"), (33, \"trtr\"), (10, \"Ja\")]\n",
+    "\n",
+    "for key, val in lst:\n",
+    "    d[key] = val\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# non functional way to populate the dictionary\n",
+    "\n",
+    "lst1 = [1, 2, 3, 4, 5]\n",
+    "lst2 = [\"a\", \"b\", \"c\", \"d\", \"f\"]\n",
+    "# Another way to create a blank dictionary\n",
+    "\n",
+    "alf = {}\n",
+    "for i, val in enumerate(lst1):\n",
+    "    alf[val] = lst2[i]\n",
+    "    \n",
+    "print(alf)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can use the above method if \n",
+    "- both the lists are of same size.\n",
+    "- list which contains the keys should not have unhashable object. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "> **NOTE**: We need to declare dictionary before we can use it. It can be a blank dictionary also "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Joining two dictionaries"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "unsupported operand type(s) for +: 'dict' and 'dict'\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+    "b = {10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n",
+    "\n",
+    "try:\n",
+    "    c = a + b\n",
+    "    print(c)\n",
+    "except TypeError as te:\n",
+    "    print(te)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "a={1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f', 10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n",
+      "b={10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n",
+      "c={1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f', 10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# !! Gotcha !! non working try !!!!\n",
+    "\n",
+    "a = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+    "b = {10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n",
+    "\n",
+    "# This is the issue now both `c` and `a` are \n",
+    "# pointing to the same memory location. \n",
+    "c = a\n",
+    "\n",
+    "for x in b:\n",
+    "    c[x] = b[x]\n",
+    "    \n",
+    "print(f\"{a=}\")\n",
+    "print(f\"{b=}\")\n",
+    "print(f\"{c=}\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(c is a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "a={1: ['a', [2]], 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+      "b={10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n",
+      "c={1: ['a', [2]], 2: 'b', 3: 'c', 4: 'd', 5: 'f', 10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# working try, but needs optimization\n",
+    "\n",
+    "a = {1:['a', [2]], 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+    "b = {10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n",
+    "\n",
+    "# Blank Dictionary c\n",
+    "c = {}\n",
+    "\n",
+    "# Populating it with entries from a\n",
+    "for x in a:\n",
+    "    c[x] = a[x]\n",
+    "    \n",
+    "# Populating it with entries from b\n",
+    "for x in b:\n",
+    "    c[x] = b[x]\n",
+    "    \n",
+    "print(f\"{a=}\")\n",
+    "print(f\"{b=}\")\n",
+    "print(f\"{c=}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Optimization try 1\n",
+    "\n",
+    "def dict_copy(src, dest):\n",
+    "    for x in src:\n",
+    "        dest[x] = src[x]\n",
+    "       \n",
+    "c = {}\n",
+    "dict_copy(a, c)\n",
+    "dict_copy(b, c)\n",
+    "print(a)\n",
+    "print(b)\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Lets check for deep and shallow copy\n",
+    "print(id(a[1]), id(c[1]))\n",
+    "# So its a shallow copy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 101,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "a={1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+      "b={10.0: 'TEST', 22: 'tt', 33: 'trtr', 2: 'testing'}\n",
+      "c={1: 'a', 2: 'testing', 3: 'c', 4: 'd', 5: 'f', 10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# !! Best method :) prior to Python 3.9 !!rior to Python 3.9 !!\n",
+    "\n",
+    "a = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+    "b = {10.0: 'TEST', 22: 'tt', 33: 'trtr', 2: \"testing\"}\n",
+    "\n",
+    "c = {**a, **b}\n",
+    "\n",
+    "print(f\"{a=}\")\n",
+    "print(f\"{b=}\")\n",
+    "print(f\"{c=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Merging dictionary `|`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We will create a new dictionary using two existing dictionaries."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "old_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\WinNT', 'Users': 'C:\\\\Documents and Settings', 'SYS32': 'C:\\\\Windows\\\\System32'}\n",
+      "\n",
+      "new_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\Windows', 'Users': 'C:\\\\Users'}\n",
+      "\n",
+      "result={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\Windows', 'Users': 'C:\\\\Users', 'SYS32': 'C:\\\\Windows\\\\System32'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "old_data = {\n",
+    "    \"ProgramFiles\": r\"C:\\Program Files\", \n",
+    "    \"InstallDir\": r\"C:\\WinNT\", \n",
+    "    \"Users\": r\"C:\\Documents and Settings\",\n",
+    "    \"SYS32\": r\"C:\\Windows\\System32\"\n",
+    "}\n",
+    "\n",
+    "new_data = {\n",
+    "    \"ProgramFiles\": r\"C:\\Program Files\", \n",
+    "    \"InstallDir\": r\"C:\\Windows\", \n",
+    "    \"Users\": r\"C:\\Users\"\n",
+    "}\n",
+    "\n",
+    "result  = old_data | new_data\n",
+    "\n",
+    "print(f\"{old_data=}\\n\")\n",
+    "print(f\"{new_data=}\\n\")\n",
+    "print(f\"{result=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Order in which we provide the keys matter as shown in the below example. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "# Order matters\n",
+      "\n",
+      "old_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\WinNT', 'Users': 'C:\\\\Documents and Settings', 'SYS32': 'C:\\\\Windows\\\\System32'}\n",
+      "\n",
+      "new_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\Windows', 'Users': 'C:\\\\Users'}\n",
+      "\n",
+      "result={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\WinNT', 'Users': 'C:\\\\Documents and Settings', 'SYS32': 'C:\\\\Windows\\\\System32'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"# Order matters\\n\")\n",
+    "\n",
+    "result  = new_data | old_data\n",
+    "\n",
+    "print(f\"{old_data=}\\n\")\n",
+    "print(f\"{new_data=}\\n\")\n",
+    "print(f\"{result=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Observe the value of `Users` key of result from both the above examples, which ever is last keeps the values. \n",
+    "\n",
+    "Its also possible to have more than two dictionaries to be merged to create a new dictionary as shown in the below examples."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "old_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\WinNT', 'Users': 'C:\\\\Documents and Settings', 'Sys32': 'C:\\\\Windows\\\\System32'}\n",
+      "new_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\Windows', 'Users': 'C:\\\\Users'}\n",
+      "result={'ProgramFiles': 'C:\\\\Programs', 'InstallDir': 'C:\\\\Win', 'Users': 'C:\\\\Data', 'Sys32': 'C:\\\\Win\\\\System32'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "oldest_data = {\n",
+    "    \"ProgramFiles\": r\"C:\\Programs\", \n",
+    "    \"InstallDir\": r\"C:\\Win\", \n",
+    "    \"Users\": r\"C:\\Data\",\n",
+    "    \"Sys32\": r\"C:\\Win\\System32\"\n",
+    "}\n",
+    "\n",
+    "result  = new_data | old_data | oldest_data\n",
+    "\n",
+    "print(f\"{old_data=}\")\n",
+    "print(f\"{new_data=}\")\n",
+    "print(f\"{result=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Updating Dictionary (`|=`) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Merging a dictionary into an existing dictionary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "old_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\Windows', 'Users': 'C:\\\\Users', 'Sys32': 'C:\\\\Windows\\\\System32'}\n",
+      "\n",
+      "new_data={'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\Windows', 'Users': 'C:\\\\Users'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "old_data = {\n",
+    "    \"ProgramFiles\": r\"C:\\Program Files\", \n",
+    "    \"InstallDir\": r\"C:\\WinNT\", \n",
+    "    \"Users\": r\"C:\\Documents and Settings\",\n",
+    "    \"Sys32\": r\"C:\\Windows\\System32\"\n",
+    "}\n",
+    "\n",
+    "new_data = {\n",
+    "    \"ProgramFiles\": r\"C:\\Program Files\", \n",
+    "    \"InstallDir\": r\"C:\\Windows\", \n",
+    "    \"Users\": r\"C:\\Users\"\n",
+    "}\n",
+    "\n",
+    "old_data |= new_data\n",
+    "\n",
+    "print(f\"{old_data=}\\n\")\n",
+    "print(f\"{new_data=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Also note, that this new union operator `|` can be used for inline updating also as shown in the below exmaple"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'ProgramFiles': 'C:\\\\Program Files', 'InstallDir': 'C:\\\\Windows', 'Users': 'C:\\\\Users', 'System': 'C:\\\\Windows\\\\System'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Another way to merge key values in the dictionary \n",
+    "\n",
+    "new_data |= [('System', r\"C:\\Windows\\System\")]\n",
+    "print(new_data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "a={1: 'a', 2: 'testing', 3: 'c', 4: 'd', 5: 'f', 10.0: 'TEST', 22: 'tt', 33: 'trtr'}\n",
+      "b={10.0: 'TEST', 22: 'tt', 33: 'trtr', 2: 'testing'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# When we want to populate `a` with entries of `b`\n",
+    "\n",
+    "a |= b\n",
+    "print(f\"{a=}\")\n",
+    "print(f\"{b=}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{1: 'AA', 2: 'testing', 3: 'c', 4: 'd', 5: 'f', 10.0: 'TEST', 22: 1, 33: 'trtr'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# We can get the union of even more then two dictionaries\n",
+    "\n",
+    "a = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+    "b = {10.0: 'TEST', 22: 'tt', 33: 'trtr', 2: \"testing\"}\n",
+    "c = {22: 1, 1: 'AA'}\n",
+    "\n",
+    "d = a | b | c\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{22: 'tt', 1: 'a', 2: 'testing', 3: 'c', 4: 'd', 5: 'f', 10.0: 'TEST', 33: 'trtr'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "a = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'f'}\n",
+    "b = {10.0: 'TEST', 22: 'tt', 33: 'trtr', 2: \"testing\"}\n",
+    "c = {22: 1, 1: 'AA'}\n",
+    "\n",
+    "d = c | a | b\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Dictionary Gocha's"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "- Same Numeric values keys  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "d={10: 'Really Testing'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "d = dict()\n",
+    "\n",
+    "# lets populate the dictionary\n",
+    "\n",
+    "d[10] = \"really testing\"\n",
+    "d[10.0] = \"Really Testing\"\n",
+    "\n",
+    "print(f\"{d=}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "d={12.0: 'really testing'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "d = dict()\n",
+    "\n",
+    "# lets populate the dictionary\n",
+    "d[12.0] = \"Really Testing\"\n",
+    "d[12]= \"really testing\"  # here it will update the existing key/value pair,\n",
+    "                         # by just updating the value.\n",
+    "\n",
+    "print(f\"{d=}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "> **NOTE**: Dictionaries are implemented with a hash table and hash of 10.0 and 10 are same, thus  10.0 and 10 keys of dict are same and only one key/value pair is shown for them. Please check the url for details.   \n",
+    "> - https://stackoverflow.com/questions/32209155/why-can-a-floating-point-dictionary-key-overwrite-an-integer-key-with-the-same-v/32211042#32211042"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "hash(10.0) == hash(10)=True\n",
+      "10 10\n",
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f\"{hash(10.0) == hash(10)=}\")\n",
+    "print(hash(10.0), hash(10))\n",
+    "print(10.0 == 10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 87,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{21.0: 'Ja, Ich bin eine Mann'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "d = dict()\n",
+    "\n",
+    "# lets populate the dictionary\n",
+    "\n",
+    "d[21.0]= \"really testing\"\n",
+    "d[21] = \"Ja, Ich bin eine Mann\"\n",
+    "\n",
+    "print(d)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 89,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{3: 4, 5: 6, 10: 2}\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Updating key `1` with `10`\n",
+    "\n",
+    "a = {1: 2, 3: 4, 5: 6}\n",
+    "# changing keys of dictionary\n",
+    "a[10] = a.pop(1)\n",
+    "print(a)"
+   ]
+  }
+ ]
+ 
+}
+

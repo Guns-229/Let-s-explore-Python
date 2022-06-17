@@ -1,0 +1,132 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "id": "http://example.com/example.json",
+    "type": "object",
+    "const": {
+        "project_id": "db-data-factory",
+        "region": "asia-south1",
+        "cluster_name_prefix": "dprocutil-default",
+        "cluster_name": "some-cluster-name",
+        "cluster_labels_selector": {
+            "azy": "pyspark-stream-example",
+            "azy2": "cluster_selector-default"
+        },
+        "cluster_workflow_labels_selector": [
+            "azy",
+            "selector_key1"
+        ],
+        "exclude_workflow_templates": [
+            "poc-template"
+        ],
+        "replication_policies": {
+            "aggressive_downscaling": "azy-downscaling_asia-south1",
+            "aggressive_upscaling": "azy-upscaling_asia-south1",
+            "bau": "azy-bau_asia-south1"
+        }
+    },
+    "properties": {
+        "project_id": {
+            "id": "#project_id",
+            "type": "string",
+            "const": "db-data-factory"
+        },
+        "region": {
+            "id": "#region",
+            "type": "string",
+            "const": "asia-south1"
+        },
+        "cluster_name_prefix": {
+            "id": "#cluster_name_prefix",
+            "type": "string",
+            "const": "dprocutil-default"
+        },
+        "cluster_name": {
+            "id": "#cluster_name",
+            "type": "string",
+            "const": "some-cluster-name"
+        },
+        "cluster_labels_selector": {
+            "id": "#cluster_labels_selector",
+            "type": "object",
+            "const": {
+                "azy": "pyspark-stream-example",
+                "azy2": "cluster_selector-default"
+            },
+            "properties": {
+                "azy": {
+                    "id": "#azy",
+                    "type": "string",
+                    "const": "pyspark-stream-example"
+                },
+                "azy2": {
+                    "id": "#azy2",
+                    "type": "string",
+                    "const": "cluster_selector-default"
+                }
+            },
+            "additionalProperties": false
+        },
+        "cluster_workflow_labels_selector": {
+            "id": "#cluster_workflow_labels_selector",
+            "type": "array",
+            "const": [
+                "azy",
+                "selector_key1"
+            ],
+            "additionalItems": false,
+            "items": [
+                {
+                    "id": "#0",
+                    "type": "string",
+                    "const": "azy"
+                },
+                {
+                    "id": "#1",
+                    "type": "string",
+                    "const": "selector_key1"
+                }
+            ]
+        },
+        "exclude_workflow_templates": {
+            "id": "#exclude_workflow_templates",
+            "type": "array",
+            "const": [
+                "poc-template"
+            ],
+            "additionalItems": false,
+            "items": {
+                "id": "#0",
+                "type": "string",
+                "const": "poc-template"
+            }
+        },
+        "replication_policies": {
+            "id": "#replication_policies",
+            "type": "object",
+            "const": {
+                "aggressive_downscaling": "azy-downscaling_asia-south1",
+                "aggressive_upscaling": "azy-upscaling_asia-south1",
+                "bau": "azy-bau_asia-south1"
+            },
+            "properties": {
+                "aggressive_downscaling": {
+                    "id": "#aggressive_downscaling",
+                    "type": "string",
+                    "const": "azy-downscaling_asia-south1"
+                },
+                "aggressive_upscaling": {
+                    "id": "#aggressive_upscaling",
+                    "type": "string",
+                    "const": "azy-upscaling_asia-south1"
+                },
+                "bau": {
+                    "id": "#bau",
+                    "type": "string",
+                    "const": "azy-bau_asia-south1"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

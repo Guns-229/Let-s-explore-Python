@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block page_title %}send and clear{% endblock %}
+{% block head %}
+<style>
+
+</style>
+{% endblock %}
+{% block body %}
+ 
+<section>
+  <canvas id='canvas'></canvas>
+</section>
+
+<button id="view_cookies"> !!! Click Me !!! </button>
+<script>
+$().ready(function(){
+    function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        }
+        else var expires = "";
+
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+
+    createCookie("nationalist", "Shaheed Bhagat Singh", 10);
+    $("#view_cookies").click(function(){
+        var cook = readCookie("nationalist");
+        console.log(cook);
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.font = "20px Comic Sans MS";
+        ctx.fillStyle = "red";
+        ctx.textAlign = "center";
+        ctx.fillText(cook, canvas.width/2, canvas.height/2);
+    });
+});
+
+</script>
+{% endblock %}

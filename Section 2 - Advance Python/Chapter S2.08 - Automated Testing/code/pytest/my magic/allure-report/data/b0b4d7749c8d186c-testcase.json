@@ -1,0 +1,59 @@
+{
+  "uid" : "b0b4d7749c8d186c",
+  "name" : "test_foo",
+  "title" : "Test foo",
+  "time" : {
+    "start" : 1494682521178,
+    "stop" : 1494682521182,
+    "duration" : 4
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 1
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "347a4e6f36afcbc9",
+    "name" : "try_12",
+    "title" : "Try 12"
+  },
+  "steps" : [ {
+    "name" : "Function called with args (1, 2, 3), kwargs {'foo': 'bar', 'baz': '123'}",
+    "title" : "Function called with args (1, 2, 3), kwargs {'foo': 'bar', 'baz': '123'}",
+    "time" : {
+      "start" : 1494682521181,
+      "stop" : 1494682521182,
+      "duration" : 1
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  } ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-name",
+    "value" : "try_12"
+  }, {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "8584-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  } ],
+  "parameters" : [ ]
+}

@@ -1,0 +1,50 @@
+{
+  "uid" : "e2cc2fc9a26ffd8d",
+  "name" : "test_auto[bar-a-b]",
+  "title" : "Test auto [bar-a-b]",
+  "time" : {
+    "start" : 1494675283537,
+    "stop" : 1494675283705,
+    "duration" : 168
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "AssertionError: bar\nassert 'a' == 'b'\n  - a\n  + b",
+    "stackTrace" : "name = 'bar', left = 'a', right = 'b'\n\n    @pytest.mark.parametrize('name, left, right', [['foo', 'a', 'a'],\n                                                   ['bar', 'a', 'b'],\n                                                   ['baz', 'b', 'b']])\n    def test_auto(name, left, right):\n        @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n        def test_new(name, left, right):\n            assert left == right, name\n        # pytest.allure.severity_level\n    \n        def myd():\n            print(\"Myd\")\n        # pytest.allure._allurelistener.test = myd()\n        print(dir(pytest.allure._allurelistener.test))\n        pytest.allure.story(\"TEST1\")\n    \n        # print(dir()\n        # print(dir(allure.issue(\"TEST\")))\n>       test_new(name, left, right)\n\ntry_4.py:29: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nname = 'bar', left = 'a', right = 'b'\n\n    @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)\n    def test_new(name, left, right):\n>       assert left == right, name\nE       AssertionError: bar\nE       assert 'a' == 'b'\nE         - a\nE         + b\n\ntry_4.py:18: AssertionError"
+  },
+  "description" : {
+    "value" : "\nCreated on Sat May 13 08:06:17 2017\n\n@author: johri_m\n",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "FAILED",
+  "suite" : {
+    "uid" : "6831610e34825b53",
+    "name" : "try_4",
+    "title" : "Try 4"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "thread",
+    "value" : "5148-MainThread"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_4"
+  } ],
+  "parameters" : [ ]
+}

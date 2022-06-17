@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block header%}
+<style>
+#question{
+    background-color: #cefff0;
+    border: solid #ceefe4 2px;
+    font-size: 1.1em;
+    color: #31101b;
+    font-family: Tahoma, Geneva, sans-serif;
+    margin-top: 2em;
+    padding: 0.2em;
+}
+#choices{
+    border: 1px solid  #ceefe4;
+    background-color: white;
+    font-family: Tahoma, Geneva, sans-serif;
+    padding: 0.5em;
+    padding-left: 2em;
+}
+#code {
+    font-family: "Lucida Console", Monaco, monospace;
+    padding: 0.2em;
+    font-size: 0.9em;
+    white-space: pre;
+    display: block;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 center>Please select the correct choice</h1>
+<form action="" method="POST" >
+    <div id="question">{{question.question}}</div>
+    <div id="choices">
+        {% for choice in question.choices %}
+             <input type="radio" id="choices" name="choice_{{question.id}}" value="{{choice.id}}"/>{{choice.choice}}<br/>
+        {% endfor %}
+    </div>
+</form>
+    <a id="next">next question</a>
+    <input type="button" id="Submit" value="Submit" />
+<script>
+
+function redirectPost(url, data) {
+    var form = document.createElement('form');
+    document.body.appendChild(form);
+    form.method = 'post';
+    form.action = url;
+    for (var name in data) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = data[name];
+        form.appendChild(input);
+    }
+    form.submit();
+}
+
+
+
+    function select_values(){
+        console.info($("input[id=choices]:checked").val());
+        console.info(sessionStorage.getItem("sols"));
+        var sols = JSON.parse(sessionStorage.getItem("sols"));
+        current = parseInt($.urlParam("q_id"));
+
+        sols[current] = $("input[id=choices]:checked").val();
+        console.info(sols);
+
+        sessionStorage.setItem("sols", JSON.stringify(sols));
+    };
+
+    $("#Submit").click(function(){
+        select_values();
+        var sols = JSON.parse(sessionStorage.getItem("sols"));
+        redirectPost( "/moolyaankan", sols );
+        // console.info(result);
+    });
+
+    $("#next").click(function(){
+        select_values();
+    });
+
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null){
+           return null;
+        }
+        else{
+           return decodeURI(results[1]) || 0;
+        }
+    }
+
+    $().ready(function(){
+        var quest = JSON.parse(sessionStorage.getItem("quest"));
+        console.log(quest);
+        console.info(quest.length);
+        current = parseInt($.urlParam("q_id"));
+        if (current == parseInt(quest[quest.length-1])){
+            $("#next").hide();
+        }else{
+            next = parseInt(quest[quest.indexOf(current)+1]);
+            console.info(next);
+            $("#next").attr('href', '/one_q?q_id='
+                + next);
+
+        }
+    });
+</script>
+{% endblock %}

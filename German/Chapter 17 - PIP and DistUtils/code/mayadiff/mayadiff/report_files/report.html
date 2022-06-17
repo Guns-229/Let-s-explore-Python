@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<style>
+    body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    .table_caption{
+        font-size: 1.2em;
+    }
+    .summary_table>th{
+        border: 1px solid #20103e;
+        background: #b3d4fc;
+        padding: .31em;
+        font-weight: 100;
+    }
+    table{
+        width:100%;
+    }
+    table,th,td {
+        text-align: center;
+
+        border: #b3d4fc 1px solid;
+    }
+    th{
+        background-color: #56a2d9;
+    }
+    section caption{
+        width:*;
+        background: #0093ff;
+        -webkit-border-radius: 10px 0 10px 0;
+        border-radius: 10px 10px 0 0  ;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=63)";
+        color: white;
+        font-weight: bold;
+        filter: alpha(opacity=63);
+    }
+    footer>a{
+        color: white;
+    }
+    footer {
+        width:100%;
+        height:2em;
+        border: 1px groove #aaaaaa;
+        bottom:0;
+        font-style:italic;
+        left:0;
+        clear: both;
+        background: blue;
+        color: White;
+        padding: 0;
+        text-align: center;
+        vertical-align: middle;
+        line-height: normal;
+        margin: 0;
+        position: fixed;
+    }
+		.fail{
+			background-color: rgba(173, 0, 0, 1);
+		}
+		.status{
+			color: yellow;
+		}
+    hr {
+      display: block;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      margin-left: auto;
+      margin-right: auto;
+      border-style: inset;
+      border-width: 1px;
+    }
+  </style>
+
+</head>
+<body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <h1 style="color: white; text-align: center;">Folder Compare Report, <small>Version: 0.2 (ALPHA)</small> </h1>
+  </div>
+  <div class="container">
+  <!-- Example row of columns -->
+  <hr>
+    <section>
+        <table id="summary_table" class="tables" style="margin: 0 auto;">
+            <caption class="table_caption">Summary</caption>
+            <tr >
+                <th>Passed</th>
+                <th>Failed</th>
+                <th>Errored</th>
+                <th>Missing</th>
+                <th>Zero Size</th>
+            </tr>
+            <tr >
+                <td id="samefile">Passed</td>
+                <td id="diff_files">Failed</td>
+                <td id="Errored_files">Errored Files</td>
+                <td id="missing_files">Missing Files</td>
+                <td id="zero_files">Zero Size File Pair</td>
+            </tr>
+        </table>
+        <hr>
+        <table id="result_table" class="tables" style="margin: 0 auto;">
+            <caption class="table_caption">Compare Report</caption>
+            <thead>
+              <tr >
+                  <th>Filename</th>
+                  <th>Diff File</th>
+                  <th>Result</th>
+              </tr>
+            </thead>
+        </table>
+        <hr>
+        <table id="missing_table" class="tables" style="margin: 0 auto;">
+            <caption class="table_caption">Missing Files</caption>
+            <thead>
+              <tr >
+                  <th>Filename</th>
+                  <th>Missing From</th>
+              </tr>
+            </thead>
+        </table>
+        <hr>
+        <table id="failed_table" class="tables" style="margin: 0 auto;">
+            <caption class="table_caption">Failed Files</caption>
+            <thead>
+              <tr >
+                  <th>Filename</th>
+                  <th>Missing From</th>
+              </tr>
+            </thead>
+        </table>
+        <hr>
+        <table id="zero_table" class="tables" style="margin: 0 auto;">
+            <caption class="table_caption">List of files with zero size</caption>
+            <thead>
+              <tr >
+                  <th>Filename</th>
+                  <th>Old File Size</th>
+                  <th>New File Size</th>
+              </tr>
+            </thead>
+        </table>
+    </section>
+    <br>
+  <footer>
+    <p>&copy; <a href="mailto:mayankjohri@gmail.com">Mayank Johri</a> 2014, License: GNU 3.0</p>
+  </footer>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var miss_count = 0;
+      var pass_count = 0;
+      var fail_count = 0;
+      var zero_count = 0;
+      var diff_count = 0;
+      var results ;
+      $.when(
+        $.getJSON("miss_list.json" ,function(result){
+          $.each(result, function(i, field){
+              miss_count++;
+            });
+        }),
+        $.getJSON("size_zero.json" ,function(result){
+          $.each(result, function(i, field){
+            //console.log("a");
+            zero_count++;
+          });
+          //console.log(zero_count);
+        }),
+        $.getJSON("result.json" ,function(result){
+          $.each(result, function(i, field){
+            //console.info(field["status"]);
+            if(field["status"] == "Pass"){
+              ++pass_count;
+            }else{
+							if(field["diff"] == null){
+                // Should never reach at this point as the failed files are moved to failed json files.
+                // Failed files
+							}else{
+							// Different files
+                ++diff_count;
+							}
+					  }
+          });
+        }), //zero_table
+        $.getJSON("size_zero.json" ,function(result){
+          $.each(result, function(i, field){
+            zero_count++;
+          });
+        }),
+        $.getJSON("failed.json" ,function(result){
+          $.each(result, function(i, field){
+            fail_count++;
+          });
+        })
+      ).then(function(){
+        $("#samefile").text(pass_count);
+        $("#diff_files").text(diff_count);
+        $("#zero_files").text(zero_count);
+        $("#missing_files").text(miss_count);
+        $("#Errored_files").text(fail_count);
+
+      $('#result_table').dataTable({
+        "ajax": {
+          "url": "result.json",
+          "dataSrc": ""
+        },
+        "columns": [
+          { "data": "file" },
+          { "data": "diff" },
+          { "data": "status" }
+        ],
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+          if(aData['diff']!=null){
+            $(nRow).css('background-color','#FF944D' );
+          }
+        }
+    });
+    if(miss_count !=0){
+      $('#missing_table').dataTable( {
+        "ajax": {
+          "url": "miss_list.json",
+          "dataSrc": ""
+        },
+        "columns": [
+          { "data": "file" },
+          { "data": "miss" }
+        ]
+      });
+    }else{
+      $('#missing_table').hide();
+    };
+    if(zero_count !=0){
+      $('#zero_table').dataTable( {
+        "ajax": {
+          "url": "size_zero.json",
+          "dataSrc": ""
+        },
+        "columns": [
+          { "data": "file" },
+          { "data": "old" },
+          { "data": "new" }
+        ]
+      });
+    }else{
+      $('#zero_table').hide();
+    };
+    if(fail_count !=0){
+      $('#failed_table').dataTable( {
+        "ajax": {
+          "url": "failed.json",
+          "dataSrc": ""
+        },
+        "columns": [
+          { "data": "file" },
+          { "data": "miss" }
+        ]
+      });
+    }else{
+      $('#failed_table').hide();
+    };
+    });
+  });
+  </script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-10992782-1');ga('send','pageview');
+    </script>
+  </body>
+</html>

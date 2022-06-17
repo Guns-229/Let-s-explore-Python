@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block page_title %}send and clear{% endblock %}
+{% block body %}
+<div class="container">
+    <h1 id="welcome_msg"></h1>
+    {% if user_info['role'] == 'admin' %}
+        <h2>User has Admin rights</h2>
+        <p>This is just to showcase use of if .. else construct...</p>
+
+    {% elif user_info['role'] == 'user' %}
+        <h2>User has User rights</h2>
+    {% endif %}
+    <button onclick="goBack()">Go Back</button>
+
+</div>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+{% endblock %}

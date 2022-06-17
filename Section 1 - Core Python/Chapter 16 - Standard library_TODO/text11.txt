@@ -1,0 +1,5 @@
+
+**************************************
+This text will be compressed and ...
+... stored inside a zip file.
+***************************************

@@ -1,0 +1,15 @@
+...F...
+======================================================================
+FAIL: test_others_a_b (__main__.TestUM)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "test_2_asserts_equals.py", line 56, in test_others_a_b
+    print(self.assertEqual(a, b))
+AssertionError: 10 != 12
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+FAILED (failures=1)
+None
+None

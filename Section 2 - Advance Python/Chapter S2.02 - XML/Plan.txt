@@ -1,0 +1,80 @@
+## Plan 
+
+An Over View of XML
+
+What Is XML?
+Why Are Developers Excited about XML?
+The Life of an XML Document
+Related Technologies
+Document Type Definitions and Validity
+
+Document Type Definitions
+Document Type Declarations
+Validating Against a DTD
+Listing the Elements
+Element Declarations
+Comments in DTDs
+Sharing Common DTDs Among Documents
+Attribute Declarations in DTDs
+
+Attributes � Defining it
+Declaring Attributes in DTDs
+Specifying Default Values for Attributes
+Attribute Types
+Predefined Attributes
+Entities and External DTD Subsets
+
+v What Is an Entity?
+v Internal General Entities
+v External General Entities
+v Internal Parameter Entities
+v External Parameter Entities
+v Building a Document from Pieces
+v Entities and DTDs in Well-Formed Documents
+Embedding Non-XML Data
+
+v Notations
+v Unparsed External Entities
+v Processing Instructions
+v Conditional Sections in DTDs
+Namespaces
+
+v Introduction to Namespaces
+v Namespace Syntax
+v Namespaces in XML related technologies
+Schemas
+
+v Introduction
+v Differences, Advantages and Limitations
+v Defining Schemas
+XSL Transformations
+
+v What Is XSL?
+v Overview of XSL Transformations
+v XSL Templates
+v Processing the Child elements
+v Node Set Functions
+v Operators
+v Number Functions
+v String Functions
+v Numbering and Sorting
+v Defining Constants with xsl:variable
+v Named Templates
+v Making Choices
+v Merging Multiple Style Sheets
+v Determining the Output Format
+v Altering Document Structure
+XLinks
+
+v XLinks
+v XLinks versus HTML Links
+v Simple Links
+v Extended Links
+o Out-of-Line Links
+o Link Bases
+XPointers
+
+v Xpointers
+v Xpointers versus HTML Pointers
+v Specifying XPointers
+v Fragment Identifiers

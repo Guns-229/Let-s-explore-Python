@@ -1,0 +1,13 @@
+{
+    "title": "Lets Explore: Core Python",
+    "description": "This book has been created as part of reference material for learning Python language. The entire Python Training material has been divided into three sections, This is book One which covers only Core Python.",
+    "author": "Mayank Johri",
+    "output.name": "LetsExplore_CorePython",
+    "language": "en",
+    "root": ".",
+    "plugins": [
+        "simple-page-toc@^0.1.1"
+    ],
+    "pluginsConfig": {
+    }
+}

@@ -1,0 +1,4 @@
+Timeout (0:00:02)!
+Thread 0x00007fb96eeb2540 (most recent call first):
+  File "timeout_exit_true_1_example.py", line 6 in MySample
+  File "timeout_exit_true_1_example.py", line 13 in <module>

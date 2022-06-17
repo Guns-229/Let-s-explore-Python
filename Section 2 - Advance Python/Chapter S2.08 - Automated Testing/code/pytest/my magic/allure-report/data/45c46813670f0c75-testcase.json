@@ -1,0 +1,47 @@
+{
+  "uid" : "45c46813670f0c75",
+  "name" : "test_skip_xfail_in_parametrize[10]",
+  "title" : "Test skip xfail in parametrize [10]",
+  "time" : {
+    "start" : 1494642759217,
+    "stop" : 1494642759218,
+    "duration" : 1
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : {
+    "value" : "\nCreated on Sat May 13 07:39:58 2017\n\n@author: johri_m\n\r\nsame as above_3, but has some decorators",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "14f09bc9dcb0ad5e",
+    "name" : "try_2",
+    "title" : "Try 2"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "LP-R90C2H0L"
+  }, {
+    "name" : "suite-name",
+    "value" : "try_2"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "9076-MainThread"
+  } ],
+  "parameters" : [ ]
+}

@@ -1,0 +1,8 @@
+wheel
+jupyter
+ipykernel
+notebook
+scikit-learn
+
+# nb-mermaid
+
